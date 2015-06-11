@@ -1,8 +1,11 @@
-package Representations;
+package representations;
 
 public class Map {
 	public int height, width;
 	public boolean[][] isObstacle;
+	
+	public Map () {
+	}
 	
 	public Map (int h, int w) {
 		height = h;
@@ -10,7 +13,7 @@ public class Map {
 		isObstacle = new boolean[h][w];
 	}
 	
-	public void setPointObstacle (Point p) {
+	public void setPointAsObstacle (Point p) {
 		isObstacle[p.x][p.y] = true;
 	}
 	
@@ -19,7 +22,7 @@ public class Map {
 	public void setRectangleObstacle (Point p1, Point p2){
 		for (int i = p1.x; i < p2.x; i++)
 			for (int j = p1.y; j < p2.y; j++)
-				setPointObstacle(new Point(i,j));
+				setPointAsObstacle(new Point(i,j));
 	}
 	
 }

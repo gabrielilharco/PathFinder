@@ -1,4 +1,4 @@
-package Representations;
+package representations;
 
 public class Graph {
 	
