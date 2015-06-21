@@ -7,16 +7,19 @@ public class Map {
 	public Map () {
 	}
 	
-	public Map (int h, int w) {
+	public Map (int w, int h) {
 		height = h;
 		width = w;
-		isObstacle = new boolean[h][w];
+		isObstacle = new boolean[w][h];
 	}
 	
 	public void setPointAsObstacle (Point p) {
 		isObstacle[p.x][p.y] = true;
 	}
 	
+	public void setPointAsPath (Point p) {
+		isObstacle[p.x][p.y] = false;
+	}
 	
 	// expects the coordinates of the left lower (1) and right upper (2) corners
 	public void setRectangleObstacle (Point p1, Point p2){

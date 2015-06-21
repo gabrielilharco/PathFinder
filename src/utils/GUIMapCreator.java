@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import representations.Map;
 

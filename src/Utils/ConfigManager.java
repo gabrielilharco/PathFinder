@@ -18,7 +18,7 @@ public class ConfigManager {
 		return configManager;
 	}
 	
-	private Document getXml() {		
+	private static Document getXml() {		
 		Document doc = null;
 		
 		try {
@@ -27,8 +27,6 @@ public class ConfigManager {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			doc = dBuilder.parse(fXmlFile);
 		 
-			//optional, but recommended
-			//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
 			doc.getDocumentElement().normalize();
 						
 		} catch (Exception e) {
@@ -38,7 +36,7 @@ public class ConfigManager {
 		return doc;		
 	}
 	
-	public String getMapName() {
+	public static String getMapName() {
 		Document doc = getXml();
 		NodeList nList = doc.getElementsByTagName("map");
 		Node nNode = nList.item(0);

@@ -1,17 +1,17 @@
 package main;
 
+import java.io.Console;
+
 import representations.Map;
-import utils.IMapCreator;
-import utils.ImageMapCreator;
+import Utils.ImageMapCreator;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("test");
+	
+		ImageMapCreator fmc = new ImageMapCreator();
+		Map map = fmc.createMap();
 		
-		IMapCreator mapCreator = new  ImageMapCreator();
-		Map map = mapCreator.createMap();
 		System.out.println("Finished test");
 	}
 

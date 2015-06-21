@@ -1,5 +1,5 @@
 package representations;
 
-public interface INode {
+public class Node {
 
 }
