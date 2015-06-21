@@ -7,10 +7,10 @@ public class Map {
 	public Map () {
 	}
 	
-	public Map (int h, int w) {
+	public Map (int w, int h) {
 		height = h;
 		width = w;
-		isObstacle = new boolean[h][w];
+		isObstacle = new boolean[w][h];
 	}
 	
 	public void setPointAsObstacle (Point p) {

@@ -5,12 +5,16 @@ import java.util.HashMap;
 
 import representations.Graph;
 import representations.Vertex;
+import java.io.Console;
+import representations.Map;
+import utils.ImageMapCreator;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("test");
+	
+		ImageMapCreator fmc = new ImageMapCreator();
+		Map map = fmc.createMap();
 		
 //		IMapCreator mapCreator = new  ImageMapCreator();
 //		Map map = mapCreator.createMap();
@@ -33,6 +37,7 @@ public class Main {
 		for (Vertex<Integer> v : graph.adj(new Vertex<Integer>(1))) {
 			System.out.println(v.get());
 		}
+		System.out.println("Finished test");
 	}
 
 }
