@@ -1,9 +1,9 @@
 package algorithm;
 
-import representations.Map;
+import representations.Graph;
 import representations.Path;
 import representations.Point;
 
 public interface IAlgorithm {
-	Path findPath (Map m, Point origin, Point destination);
+	public Path run (Graph graph, Point origin, Point destination);
 }

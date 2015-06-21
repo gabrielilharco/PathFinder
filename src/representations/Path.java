@@ -3,13 +3,13 @@ package representations;
 import java.util.ArrayList;
 
 public class Path {
-	public ArrayList<INode> nodeList;
+	public ArrayList<Vertex> nodeList;
 	
 	public Path () {
-		nodeList = new ArrayList<INode>();
+		nodeList = new ArrayList<Vertex>();
 	}
 	
-	public void addNode (INode node) {
+	public void addNode (Vertex node) {
 		nodeList.add(node);
 	}
 	
