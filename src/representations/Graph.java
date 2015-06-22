@@ -31,11 +31,6 @@ public class Graph<E> {
 		_adj.get(ori).add(dest);
 	}
 	
-	private void validateVertex(Vertex<E> vertex) {
-		if (!_adj.containsKey(vertex))
-			throw new NoSuchElementException();
-	}
-	
 	public int degree (Vertex<E> vertex) {
 		validateVertex(vertex);
 		return _adj.get(vertex).size();
@@ -52,6 +47,11 @@ public class Graph<E> {
 	
 	public int E () {
 		return _E;
+	}
+	
+	private void validateVertex(Vertex<E> vertex) {
+		if (!_adj.containsKey(vertex))
+			throw new NoSuchElementException();
 	}
 	
 }

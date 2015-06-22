@@ -1,13 +1,11 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import representations.Graph;
-import representations.Vertex;
-import java.io.Console;
 import representations.Map;
+import representations.Path;
+import representations.Vertex;
 import utils.ImageMapCreator;
+import algorithm.DepthFirstSearch;
 
 public class Main {
 
@@ -32,11 +30,22 @@ public class Main {
 		
 		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(2));
 		graph.addEdge(new Vertex<Integer>(2), new Vertex<Integer>(1));
-		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(3));
+		graph.addEdge(new Vertex<Integer>(2), new Vertex<Integer>(3));
+		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(4));
+		graph.addEdge(new Vertex<Integer>(3), new Vertex<Integer>(5));
+		graph.addEdge(new Vertex<Integer>(5), new Vertex<Integer>(4));
 		
-		for (Vertex<Integer> v : graph.adj(new Vertex<Integer>(1))) {
-			System.out.println(v.get());
+//		for (Vertex<Integer> v : graph.adj(new Vertex<Integer>(2))) {
+//			System.out.println(v.get());
+//		}
+		
+		DepthFirstSearch<Integer> d = new DepthFirstSearch<Integer>();
+		Path<Integer> p = d.run(graph, new Vertex<Integer>(1), new Vertex<Integer>(4));
+		
+		for (Integer i : p) {
+			System.out.println(i);
 		}
+		
 		System.out.println("Finished test");
 	}
 
