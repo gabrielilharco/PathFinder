@@ -5,6 +5,7 @@ import representations.Map;
 import representations.Point;
 import draw.GUIDrawer;
 import utils.ImageMapCreator;
+import utils.TextFileMapCreator;
 import representations.Path;
 
 

@@ -36,12 +36,21 @@ public class ConfigManager {
 		return doc;		
 	}
 	
-	public static String getMapName() {
+	public static String getImageMapName() {
 		Document doc = getXml();
 		NodeList nList = doc.getElementsByTagName("map");
 		Node nNode = nList.item(0);
 		Element eElement = (Element) nNode;
-		String mapName = eElement.getElementsByTagName("file").item(0).getTextContent();		
+		String mapName = eElement.getElementsByTagName("image_file").item(0).getTextContent();		
+		return mapName;
+	}
+	
+	public static String getTextMapName() {
+		Document doc = getXml();
+		NodeList nList = doc.getElementsByTagName("map");
+		Node nNode = nList.item(0);
+		Element eElement = (Element) nNode;
+		String mapName = eElement.getElementsByTagName("text_file").item(0).getTextContent();		
 		return mapName;
 	}
 }

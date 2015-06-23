@@ -10,7 +10,7 @@ public class ImageMapCreator implements IMapCreator {
 	public Map createMap (){
 		try {
 			
-			String fileName = ConfigManager.getMapName();
+			String fileName = ConfigManager.getImageMapName();
 			
 			BufferedImage image = null;
 			

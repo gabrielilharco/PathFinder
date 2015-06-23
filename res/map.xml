@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <pathfinder>
 	<map id="1001">
-		<file>res/map1.jpg</file>
+		<image_file>res/map1.jpg</image_file>
+		<text_file>res/map.txt</text_file>
 	</map>
 </pathfinder>
