@@ -22,7 +22,8 @@ public class Main {
 		Map map = fmc.createMap();
 
 
-		new DisplayFrame().setVisible(true);
+		GUIDrawer drawer = new GUIDrawer();
+		drawer.drawPath(new Path(), map);
 
 		
 
