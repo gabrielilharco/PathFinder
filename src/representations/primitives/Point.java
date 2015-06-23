@@ -22,4 +22,28 @@ public class Point {
 	public String toString() {
 		return "(" + _x + "," + _y + ")";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+	         return false;
+	     if (this == obj)
+	          return true;
+	     if (!(obj instanceof Point))
+	          return false;
+	     
+	    Point other = (Point)obj; 
+	     
+	    return _x == other.getX() && 
+	    		this._y == other.getY();
+	}
+	
+	@Override
+	public int hashCode() {
+		//http://tinyurl.com/pmugwje
+		 int hash = 17; 
+	     hash = 31 * hash + _x;
+	     hash = 31 * hash + _y;
+	     return hash;
+	}
 }

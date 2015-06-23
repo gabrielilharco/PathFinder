@@ -3,7 +3,6 @@ package representations.graph;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 public class Path<E> implements Iterable<E>{
 	private ArrayList<E> elements;
 	

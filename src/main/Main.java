@@ -1,15 +1,13 @@
 package main;
 
-
-
+import algorithm.DepthFirstSearch;
 import representations.graph.Path;
+import representations.graph.WeightedGraph;
 import representations.maps.GridMap;
+import representations.primitives.Edge;
 import representations.primitives.Point;
 import draw.GUIDrawer;
 import utils.gridMapCreator.ImageGridMapCreator;
-import utils.gridMapCreator.TextFileGridMapCreator;
-
-
 
 public class Main {
 	public static void main(String[] args)  {
@@ -27,40 +25,35 @@ public class Main {
 		drawer.drawPath(path, map);
 
 		
-
+		Edge<Integer> e1 = new Edge<Integer> (1,2);
+		Edge<Integer> e2 = new Edge<Integer> (1,2);
+		System.out.println("Is equal: "+ e1.equals(e2));
+		System.out.println(e1.hashCode());
+		System.out.println(e2.hashCode());
 		
 //		IMapCreator mapCreator = new  ImageMapCreator();
 //		Map map = mapCreator.createMap();
 //		System.out.println("Finished test");
 		
-//		HashMap<Integer, ArrayList<Integer> > h = new HashMap<Integer, ArrayList<Integer>>();
-//		h.get(key)
+		WeightedGraph<Integer> graph = new WeightedGraph<Integer>();
 		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 1);
+		graph.addEdge(2, 3);
+//		graph.addEdge(1, 4);
+		graph.addEdge(3, 5);
+		graph.addEdge(5, 4);
 		
-//		Graph<Integer> graph = new Graph<Integer>();
-//		
-//		if (new Vertex<Integer>(1).equals(new Vertex<Integer>(1))) {
-//			System.out.println("Equal is correct");
+//		for (int  v : graph.adj(2)) {
+//			System.out.println(v);
 //		}
-//		
-//		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(2));
-//		graph.addEdge(new Vertex<Integer>(2), new Vertex<Integer>(1));
-//		graph.addEdge(new Vertex<Integer>(2), new Vertex<Integer>(3));
-//		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(4));
-//		graph.addEdge(new Vertex<Integer>(3), new Vertex<Integer>(5));
-//		graph.addEdge(new Vertex<Integer>(5), new Vertex<Integer>(4));
-//		
-////		for (Vertex<Integer> v : graph.adj(new Vertex<Integer>(2))) {
-////			System.out.println(v.get());
-////		}
-//		
-//		DepthFirstSearch<Integer> d = new DepthFirstSearch<Integer>();
-//		Path<Integer> p = d.run(graph, new Vertex<Integer>(1), new Vertex<Integer>(4));
-//		
-//		for (Integer i : p) {
-//			System.out.println(i);
-//		}
-//		
+		
+		DepthFirstSearch<Integer> d = new DepthFirstSearch<Integer>();
+		Path<Integer> p = d.run(graph, 1, 4);
+		
+		for (Integer i : p) {
+			System.out.println(i);
+		}
 
 		System.out.println("Finished test");
 	}
