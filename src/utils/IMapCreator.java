@@ -1,7 +1,7 @@
 package utils;
 
-import representations.maps.Map;
+import representations.maps.GridMap;
 
 public interface IMapCreator {
-	Map createMap ();
+	GridMap createMap ();
 }

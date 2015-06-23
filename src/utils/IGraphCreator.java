@@ -1,8 +1,8 @@
 package utils;
 
-import representations.Graph;
-import representations.maps.Map;
+import representations.graph.Graph;
+import representations.maps.GridMap;
 
 public interface IGraphCreator {
-	Graph createGraph (Map map);
+	Graph createGraph (GridMap map);
 }

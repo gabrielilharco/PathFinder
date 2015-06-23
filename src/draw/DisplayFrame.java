@@ -1,10 +1,10 @@
 package draw;
 
-import representations.maps.Map;
-import representations.Path;
+import representations.graph.Path;
+import representations.maps.GridMap;
 
 public class DisplayFrame extends javax.swing.JFrame {
-    public DisplayFrame(Path path, Map map){
+    public DisplayFrame(Path path, GridMap map){
         this.setSize(map.width+50, (int)map.height+50); //The window Dimensions
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         javax.swing.JPanel panel = new javax.swing.JPanel();

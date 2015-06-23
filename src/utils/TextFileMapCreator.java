@@ -1,14 +1,14 @@
 package utils;
 
-import representations.maps.Map;
-import representations.entities.Point;
+import representations.maps.GridMap;
+import representations.primitives.Point;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class TextFileMapCreator implements IMapCreator {
-	public Map createMap (){
+	public GridMap createMap (){
 		
 		String fileName = ConfigManager.getTextMapName();
 		BufferedReader bufferedReader = null;
@@ -33,7 +33,7 @@ public class TextFileMapCreator implements IMapCreator {
 			fileReader = new FileReader(fileName);
 			bufferedReader = new BufferedReader(fileReader);
 			
-			Map map = new Map(width,height);
+			GridMap map = new GridMap(width,height);
 			
 			int x, y = 0;
 			

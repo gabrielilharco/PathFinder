@@ -1,11 +1,11 @@
 package utils;
 
-import representations.Graph;
-import representations.maps.Map;
+import representations.graph.Graph;
+import representations.maps.GridMap;
 
 public class GridGraphCreator implements IGraphCreator{
 	
-	public Graph createGraph (Map map) {
+	public Graph createGraph (GridMap map) {
 		
 		Graph G = new Graph();
 		for (int i = 0; i < map.width; i++) {

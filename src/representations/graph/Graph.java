@@ -1,9 +1,9 @@
-package representations;
+package representations.graph;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
-import representations.entities.Vertex;
+import representations.primitives.Vertex;
 
 public class Graph<E> {
 	private int _V;

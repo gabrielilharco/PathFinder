@@ -1,10 +1,10 @@
-package representations.entities;
+package representations.primitives;
 
 public class Point {
 	private int _x, _y;
 	public Point (int x, int y) {
 		setX(x);
-		sety(y);
+		setY(y);
 	}
 	public int getX() {
 		return _x;
@@ -15,7 +15,7 @@ public class Point {
 	public int getY() {
 		return _y;
 	}
-	public void sety(int _y) {
+	public void setY(int _y) {
 		this._y = _y;
 	}
 	

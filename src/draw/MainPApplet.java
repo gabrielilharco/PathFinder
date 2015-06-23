@@ -2,23 +2,23 @@ package draw;
 
 import java.util.Iterator;
 
-import representations.Path;
-import representations.maps.Map;
-import representations.entities.Point;
+import representations.graph.Path;
+import representations.maps.GridMap;
+import representations.primitives.Point;
 import utils.ImageMapCreator;
 import processing.core.*;
 
 public class MainPApplet extends PApplet{
 	 
 		private final int u = 1;
-		private Map map;
+		private GridMap map;
 		private Path path;
 		private int width, height;
 		private boolean variableSet = false;
 		private boolean drawnMap = false;
 		private static final long serialVersionUID = 1L;
 		
-		public MainPApplet (Path p, Map m) {
+		public MainPApplet (Path p, GridMap m) {
 			height = m.height;
 			width = m.width;
 			map = m;
@@ -30,7 +30,7 @@ public class MainPApplet extends PApplet{
 		public MainPApplet () {
 			height = 1500;
 			width = 1500;
-			map = new Map();
+			map = new GridMap();
 			path = new Path();
 			variableSet = false;
 			drawnMap = false;
@@ -94,7 +94,7 @@ public class MainPApplet extends PApplet{
 			//System.out.println(variableSet);
 		}
 		
-		public void setVariables(Path p, Map m) {
+		public void setVariables(Path p, GridMap m) {
 			path = p;
 			map = m;
 			height = m.height;

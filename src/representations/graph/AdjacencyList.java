@@ -1,4 +1,4 @@
-package representations;
+package representations.graph;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

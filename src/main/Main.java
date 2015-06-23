@@ -2,12 +2,12 @@ package main;
 
 
 
-import representations.maps.Map;
-import representations.entities.Point;
+import representations.graph.Path;
+import representations.maps.GridMap;
+import representations.primitives.Point;
 import draw.GUIDrawer;
 import utils.ImageMapCreator;
 import utils.TextFileMapCreator;
-import representations.Path;
 
 
 
@@ -15,7 +15,7 @@ public class Main {
 	public static void main(String[] args)  {
 	
 		ImageMapCreator fmc = new ImageMapCreator();
-		Map map = fmc.createMap();
+		GridMap map = fmc.createMap();
 		
 		Path<Point> path = new Path<Point>();
 		path.add(new Point(323,781));

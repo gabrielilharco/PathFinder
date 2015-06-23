@@ -3,9 +3,9 @@ package utils;
 import java.io.File;
 import java.util.Scanner;
 
-import representations.entities.Point;
-import representations.entities.Rectangle;
 import representations.maps.VertexMap;
+import representations.primitives.Point;
+import representations.primitives.Rectangle;
 
 public class TextFileVertexMapCreator implements IVertexMapCreator {
 

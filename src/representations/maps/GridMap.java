@@ -1,15 +1,15 @@
 package representations.maps;
 
-import representations.entities.Point;
+import representations.primitives.Point;
 
-public class Map {
+public class GridMap {
 	public int height, width;
 	public boolean[][] isObstacle;
 	
-	public Map () {
+	public GridMap () {
 	}
 	
-	public Map (int w, int h) {
+	public GridMap (int w, int h) {
 		height = h;
 		width = w;
 		isObstacle = new boolean[w][h];

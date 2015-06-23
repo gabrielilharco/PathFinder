@@ -1,8 +1,8 @@
 package draw;
 
-import representations.Path;
-import representations.maps.Map;
+import representations.graph.Path;
+import representations.maps.GridMap;
 
 public interface IDrawer {
-	public void drawPath (Path path, Map map);
+	public void drawPath (Path path, GridMap map);
 }

@@ -1,4 +1,4 @@
-package representations.entities;
+package representations.primitives;
 
 public class Vertex<T> {
 	private T _value;

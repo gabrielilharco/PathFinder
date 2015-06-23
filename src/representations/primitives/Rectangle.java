@@ -1,4 +1,4 @@
-package representations.entities;
+package representations.primitives;
 
 public class Rectangle {
 	private Point _upper;

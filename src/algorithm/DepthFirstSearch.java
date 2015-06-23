@@ -3,9 +3,9 @@ package algorithm;
 import java.util.HashMap;
 import java.util.Stack;
 
-import representations.Graph;
-import representations.Path;
-import representations.entities.Vertex;
+import representations.graph.Graph;
+import representations.graph.Path;
+import representations.primitives.Vertex;
 
 public class DepthFirstSearch<E> implements IAlgorithm<E> {
 	//algorithm data structures

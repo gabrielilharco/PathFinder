@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import representations.Graph;
-import representations.entities.Vertex;
+import representations.graph.Graph;
+import representations.primitives.Vertex;
 
 public class GraphTest {
 	

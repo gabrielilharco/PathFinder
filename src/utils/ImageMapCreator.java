@@ -4,12 +4,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import representations.maps.Map;
+import representations.maps.GridMap;
 
 import javax.imageio.ImageIO;
 
 public class ImageMapCreator implements IMapCreator {
-	public Map createMap (){
+	public GridMap createMap (){
 		try {
 			
 			String fileName = ConfigManager.getImageMapName();
@@ -25,7 +25,7 @@ public class ImageMapCreator implements IMapCreator {
 			int mWidth = image.getWidth();
 			int mHeight = image.getHeight();
 			
-			Map map = new Map(mWidth, mHeight); 
+			GridMap map = new GridMap(mWidth, mHeight); 
 			for (int y = 0; y < mHeight; y++) {
 				for (int x = 0; x < mWidth; x++) {
 
