@@ -1,7 +1,6 @@
 package utils;
 
 import representations.Graph;
-import representations.Node;
 import representations.Map;
 
 public class GridGraphCreator implements IGraphCreator{

@@ -1,11 +1,11 @@
 package algorithm;
 
-import representations.Map;
+import representations.Graph;
 import representations.Path;
-import representations.Point;
+import representations.Vertex;
 
-public class AStar implements IAlgorithm{
-	public Path findPath (Map m, Point origin, Point destination) {
+public class AStar<E> implements IAlgorithm<E>{
+	public Path run (Graph<E> graph, Vertex<E> origin, Vertex<E> destination) {
 		return new Path(); // dummy, for now
 	}
 }

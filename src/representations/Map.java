@@ -17,10 +17,6 @@ public class Map {
 		isObstacle[p.x][p.y] = true;
 	}
 	
-	public void setPointAsPath (Point p) {
-		isObstacle[p.x][p.y] = false;
-	}
-	
 	// expects the coordinates of the left lower (1) and right upper (2) corners
 	public void setRectangleObstacle (Point p1, Point p2){
 		for (int i = p1.x; i < p2.x; i++)

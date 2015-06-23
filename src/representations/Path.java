@@ -1,16 +1,20 @@
 package representations;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Path {
-	public ArrayList<Node> nodeList;
+public class Path<E> implements Iterable<E>{
+	private ArrayList<E> elements;
 	
 	public Path () {
-		nodeList = new ArrayList<Node>();
+		elements = new ArrayList<E>();
 	}
 	
-	public void addNode (Node node) {
-		nodeList.add(node);
+	public Iterator<E> iterator() {
+		return elements.iterator();
 	}
 	
+	public void add(E elem) {
+		elements.add(elem);
+	}
 }
