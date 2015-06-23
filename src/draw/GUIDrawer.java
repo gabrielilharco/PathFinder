@@ -7,6 +7,8 @@ import representations.Map;
 public class GUIDrawer implements IDrawer{
 		
 		public void drawPath (Path path, Map map) {
-			new DisplayFrame().setVisible(true);
+			DisplayFrame mainFrame = new DisplayFrame(path,map);
+			mainFrame.setVisible(true);
+			mainFrame.setResizable(false);
 		}
 }

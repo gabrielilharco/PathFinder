@@ -1,18 +1,11 @@
 package main;
 
 
-import processing.core.PApplet;
 import representations.Map;
-import draw.DisplayFrame;
 import draw.GUIDrawer;
 import utils.ImageMapCreator;
 import representations.Path;
-import representations.Graph;
-import representations.Map;
-import representations.Path;
-import representations.Vertex;
-import utils.ImageMapCreator;
-import algorithm.DepthFirstSearch;
+
 
 
 public class Main {
@@ -20,7 +13,6 @@ public class Main {
 	
 		ImageMapCreator fmc = new ImageMapCreator();
 		Map map = fmc.createMap();
-
 
 		GUIDrawer drawer = new GUIDrawer();
 		drawer.drawPath(new Path(), map);
