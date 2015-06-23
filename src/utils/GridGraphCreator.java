@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import representations.Graph;
 import representations.Node;
