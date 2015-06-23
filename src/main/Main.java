@@ -2,6 +2,7 @@ package main;
 
 
 import representations.Map;
+import representations.Point;
 import draw.GUIDrawer;
 import utils.ImageMapCreator;
 import representations.Path;
@@ -13,9 +14,15 @@ public class Main {
 	
 		ImageMapCreator fmc = new ImageMapCreator();
 		Map map = fmc.createMap();
-
+		
+		Path<Point> path = new Path<Point>();
+		path.add(new Point(323,781));
+		path.add(new Point(796,678));
+		path.add(new Point(854,166));
+		path.add(new Point(1220,88));
+		
 		GUIDrawer drawer = new GUIDrawer();
-		drawer.drawPath(new Path(), map);
+		drawer.drawPath(path, map);
 
 		
 

@@ -17,4 +17,8 @@ public class Path<E> implements Iterable<E>{
 	public void add(E elem) {
 		elements.add(elem);
 	}
+	
+	public int size() {
+		return elements.size();
+	}
 }
