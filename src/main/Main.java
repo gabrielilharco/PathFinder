@@ -1,22 +1,33 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
-import representations.Graph;
 
-import java.io.Console;
-
-import representations.entities.Vertex;
 import representations.maps.Map;
+import representations.entities.Point;
+import draw.GUIDrawer;
 import utils.ImageMapCreator;
+import utils.TextFileMapCreator;
+import representations.Path;
+
+
 
 public class Main {
-
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 	
 		ImageMapCreator fmc = new ImageMapCreator();
 		Map map = fmc.createMap();
+		
+		Path<Point> path = new Path<Point>();
+		path.add(new Point(323,781));
+		path.add(new Point(796,678));
+		path.add(new Point(854,166));
+		path.add(new Point(1220,88));
+		
+		GUIDrawer drawer = new GUIDrawer();
+		drawer.drawPath(path, map);
+
+		
+
 		
 //		IMapCreator mapCreator = new  ImageMapCreator();
 //		Map map = mapCreator.createMap();
@@ -26,19 +37,31 @@ public class Main {
 //		h.get(key)
 		
 		
-		Graph<Integer> graph = new Graph<Integer>();
-		
-		if (new Vertex<Integer>(1).equals(new Vertex<Integer>(1))) {
-			System.out.println("Equal is correct");
-		}
-		
-		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(2));
-		graph.addEdge(new Vertex<Integer>(2), new Vertex<Integer>(1));
-		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(3));
-		
-		for (Vertex<Integer> v : graph.adj(new Vertex<Integer>(1))) {
-			System.out.println(v.get());
-		}
+//		Graph<Integer> graph = new Graph<Integer>();
+//		
+//		if (new Vertex<Integer>(1).equals(new Vertex<Integer>(1))) {
+//			System.out.println("Equal is correct");
+//		}
+//		
+//		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(2));
+//		graph.addEdge(new Vertex<Integer>(2), new Vertex<Integer>(1));
+//		graph.addEdge(new Vertex<Integer>(2), new Vertex<Integer>(3));
+//		graph.addEdge(new Vertex<Integer>(1), new Vertex<Integer>(4));
+//		graph.addEdge(new Vertex<Integer>(3), new Vertex<Integer>(5));
+//		graph.addEdge(new Vertex<Integer>(5), new Vertex<Integer>(4));
+//		
+////		for (Vertex<Integer> v : graph.adj(new Vertex<Integer>(2))) {
+////			System.out.println(v.get());
+////		}
+//		
+//		DepthFirstSearch<Integer> d = new DepthFirstSearch<Integer>();
+//		Path<Integer> p = d.run(graph, new Vertex<Integer>(1), new Vertex<Integer>(4));
+//		
+//		for (Integer i : p) {
+//			System.out.println(i);
+//		}
+//		
+
 		System.out.println("Finished test");
 	}
 

@@ -1,18 +1,25 @@
 package representations;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import representations.entities.Vertex;
 
-public class Path<E> {
-	public ArrayList<Vertex<E>> nodeList;
+public class Path<E> implements Iterable<E>{
+	private ArrayList<E> elements;
 	
 	public Path () {
-		nodeList = new ArrayList<Vertex<E>>();
+		elements = new ArrayList<E>();
 	}
 	
-	public void addNode (Vertex<E> node) {
-		nodeList.add(node);
+	public Iterator<E> iterator() {
+		return elements.iterator();
 	}
 	
+	public void add(E elem) {
+		elements.add(elem);
+	}
+	
+	public int size() {
+		return elements.size();
+	}
 }

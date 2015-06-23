@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <pathfinder>
 	<map id="1001">
-		<imageFile>res/map1.jpg</imageFile>
-		<verticesFile>res/map1.txt</verticesFile>
+		<vertices_file>res/verticesMap1.txt</vertices_file>
+		<image_file>res/map1.jpg</image_file>
+		<text_file>res/map.txt</text_file>
 	</map>
 </pathfinder>

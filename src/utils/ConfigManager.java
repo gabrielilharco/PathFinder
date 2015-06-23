@@ -41,7 +41,16 @@ public class ConfigManager {
 		NodeList nList = doc.getElementsByTagName("map");
 		Node nNode = nList.item(0);
 		Element eElement = (Element) nNode;
-		String mapName = eElement.getElementsByTagName("imageFile").item(0).getTextContent();		
+		String mapName = eElement.getElementsByTagName("image_file").item(0).getTextContent();		
+		return mapName;
+	}
+	
+	public static String getTextMapName() {
+		Document doc = getXml();
+		NodeList nList = doc.getElementsByTagName("map");
+		Node nNode = nList.item(0);
+		Element eElement = (Element) nNode;
+		String mapName = eElement.getElementsByTagName("text_file").item(0).getTextContent();	
 		return mapName;
 	}
 	
@@ -50,7 +59,7 @@ public class ConfigManager {
 		NodeList nList = doc.getElementsByTagName("map");
 		Node nNode = nList.item(0);
 		Element eElement = (Element) nNode;
-		String mapName = eElement.getElementsByTagName("verticesFile").item(0).getTextContent();		
+		String mapName = eElement.getElementsByTagName("vertices_file").item(0).getTextContent();	
 		return mapName;
 	}
 }
