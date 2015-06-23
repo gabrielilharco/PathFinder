@@ -1,6 +1,4 @@
-package representations;
-
-import sun.awt.SunHints.Value;
+package representations.entities;
 
 public class Vertex<T> {
 	private T _value;

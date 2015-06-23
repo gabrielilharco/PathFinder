@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import representations.Graph;
-import representations.Vertex;
+
 import java.io.Console;
-import representations.Map;
+
+import representations.entities.Vertex;
+import representations.maps.Map;
 import utils.ImageMapCreator;
 
 public class Main {

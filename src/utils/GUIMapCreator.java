@@ -1,6 +1,6 @@
 package utils;
 
-import representations.Map;
+import representations.maps.Map;
 
 public class GUIMapCreator implements IMapCreator {
 	public Map createMap (){

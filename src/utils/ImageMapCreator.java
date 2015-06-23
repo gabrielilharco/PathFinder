@@ -3,14 +3,16 @@ package utils;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import representations.Map;
+
+import representations.maps.Map;
+
 import javax.imageio.ImageIO;
 
 public class ImageMapCreator implements IMapCreator {
 	public Map createMap (){
 		try {
 			
-			String fileName = ConfigManager.getMapName();
+			String fileName = ConfigManager.getImageMapName();
 			
 			BufferedImage image = null;
 			

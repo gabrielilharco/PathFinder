@@ -1,7 +1,7 @@
 package utils;
 
 import representations.Graph;
-import representations.Map;
+import representations.maps.Map;
 
 public interface IGraphCreator {
 	Graph createGraph (Map map);

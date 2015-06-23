@@ -2,14 +2,16 @@ package representations;
 
 import java.util.ArrayList;
 
-public class Path {
-	public ArrayList<Vertex> nodeList;
+import representations.entities.Vertex;
+
+public class Path<E> {
+	public ArrayList<Vertex<E>> nodeList;
 	
 	public Path () {
-		nodeList = new ArrayList<Vertex>();
+		nodeList = new ArrayList<Vertex<E>>();
 	}
 	
-	public void addNode (Vertex node) {
+	public void addNode (Vertex<E> node) {
 		nodeList.add(node);
 	}
 	

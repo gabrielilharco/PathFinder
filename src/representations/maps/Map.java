@@ -1,4 +1,6 @@
-package representations;
+package representations.maps;
+
+import representations.entities.Point;
 
 public class Map {
 	public int height, width;
@@ -14,13 +16,13 @@ public class Map {
 	}
 	
 	public void setPointAsObstacle (Point p) {
-		isObstacle[p.x][p.y] = true;
+		isObstacle[p.getX()][p.getY()] = true;
 	}
 	
 	// expects the coordinates of the left lower (1) and right upper (2) corners
 	public void setRectangleObstacle (Point p1, Point p2){
-		for (int i = p1.x; i < p2.x; i++)
-			for (int j = p1.y; j < p2.y; j++)
+		for (int i = p1.getX(); i < p2.getX(); i++)
+			for (int j = p1.getY(); j < p2.getY(); j++)
 				setPointAsObstacle(new Point(i,j));
 	}
 	

@@ -3,6 +3,8 @@ package representations;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
+import representations.entities.Vertex;
+
 public class Graph<E> {
 	private int _V;
 	private int _E;
