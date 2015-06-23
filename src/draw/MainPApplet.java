@@ -5,7 +5,7 @@ import java.util.Iterator;
 import representations.graph.Path;
 import representations.maps.GridMap;
 import representations.primitives.Point;
-import utils.ImageMapCreator;
+import utils.gridMapCreator.ImageGridMapCreator;
 import processing.core.*;
 
 public class MainPApplet extends PApplet{

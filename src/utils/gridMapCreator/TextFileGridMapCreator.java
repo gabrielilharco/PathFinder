@@ -1,13 +1,14 @@
-package utils;
+package utils.gridMapCreator;
 
 import representations.maps.GridMap;
 import representations.primitives.Point;
+import utils.ConfigManager;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class TextFileMapCreator implements IMapCreator {
+public class TextFileGridMapCreator implements IGridMapCreator {
 	public GridMap createMap (){
 		
 		String fileName = ConfigManager.getTextMapName();

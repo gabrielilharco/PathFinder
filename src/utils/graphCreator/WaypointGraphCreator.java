@@ -1,4 +1,4 @@
-package utils;
+package utils.graphCreator;
 
 import representations.graph.Graph;
 import representations.maps.GridMap;

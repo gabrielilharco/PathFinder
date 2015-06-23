@@ -33,5 +33,18 @@ public class VertexMapTest {
 		exception.expect(IllegalArgumentException.class);
 		map.addRectangleObstacle(r);
 	}
-
+	
+	@Test
+	public void testToString() {
+		Point p1 = new Point(6, 6);
+		Point p2 = new Point(12, 14);
+		Rectangle r = new Rectangle(p1, p2);
+		VertexMap map = new VertexMap(30, 20);
+		map.addRectangleObstacle(r);
+		p1 = new Point(18, 9);
+		p2 = new Point(27, 12);
+		r = new Rectangle(p1, p2);
+		map.addRectangleObstacle(r);
+		assertEquals("(6,6),(12,14)\n(18,9),(27,12)\n", map.toString());
+	}
 }

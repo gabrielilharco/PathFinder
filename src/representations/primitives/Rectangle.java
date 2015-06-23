@@ -33,6 +33,14 @@ public class Rectangle {
 		}
 	}
 	
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(_upper);
+		stringBuilder.append(",");
+		stringBuilder.append(_lower);
+		return stringBuilder.toString();
+	}
+	
 	private boolean validRectangle(Point lower, Point upper) {
 		if (!(upper.getX() < lower.getX() &&
 			  upper.getY() < lower.getY())) {

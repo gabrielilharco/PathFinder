@@ -6,15 +6,15 @@ import representations.graph.Path;
 import representations.maps.GridMap;
 import representations.primitives.Point;
 import draw.GUIDrawer;
-import utils.ImageMapCreator;
-import utils.TextFileMapCreator;
+import utils.gridMapCreator.ImageGridMapCreator;
+import utils.gridMapCreator.TextFileGridMapCreator;
 
 
 
 public class Main {
 	public static void main(String[] args)  {
 	
-		ImageMapCreator fmc = new ImageMapCreator();
+		ImageGridMapCreator fmc = new ImageGridMapCreator();
 		GridMap map = fmc.createMap();
 		
 		Path<Point> path = new Path<Point>();

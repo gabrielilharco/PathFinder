@@ -26,6 +26,14 @@ public class VertexMap {
 	public Iterable<Rectangle> obstacleList() {
 		return _obstacles;
 	}
+	
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (Rectangle rectangle : _obstacles) {
+			stringBuilder.append(rectangle + "\n");
+		}
+		return stringBuilder.toString();
+	}
 
 	private boolean isInsideMapBounds(Rectangle rectangle) {
 		int upperX = rectangle.getUpper().getX();

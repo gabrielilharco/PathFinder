@@ -1,14 +1,15 @@
-package utils;
+package utils.gridMapCreator;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import representations.maps.GridMap;
+import utils.ConfigManager;
 
 import javax.imageio.ImageIO;
 
-public class ImageMapCreator implements IMapCreator {
+public class ImageGridMapCreator implements IGridMapCreator {
 	public GridMap createMap (){
 		try {
 			

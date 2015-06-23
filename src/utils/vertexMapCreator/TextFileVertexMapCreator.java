@@ -1,4 +1,4 @@
-package utils;
+package utils.vertexMapCreator;
 
 import java.io.File;
 import java.util.Scanner;
@@ -6,6 +6,7 @@ import java.util.Scanner;
 import representations.maps.VertexMap;
 import representations.primitives.Point;
 import representations.primitives.Rectangle;
+import utils.ConfigManager;
 
 public class TextFileVertexMapCreator implements IVertexMapCreator {
 

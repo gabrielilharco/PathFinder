@@ -19,4 +19,7 @@ public class Point {
 		this._y = _y;
 	}
 	
+	public String toString() {
+		return "(" + _x + "," + _y + ")";
+	}
 }
