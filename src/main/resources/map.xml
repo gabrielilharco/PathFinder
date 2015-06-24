@@ -5,4 +5,7 @@
 		<image_file>res/map1.jpg</image_file>
 		<text_file>res/map.txt</text_file>
 	</map>
+	<images id="1002">
+		<background>res/background.png</background>
+	</images>
 </pathfinder>
