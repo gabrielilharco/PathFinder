@@ -1,4 +1,4 @@
-package graphicInterface;
+package pathfinder.graphicInterface;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,10 +12,10 @@ public class MainJFrame extends JFrame
 {
 	public MainJFrame()
 	{
-		  JFrame f = new JFrame("Foobar");
+		  JFrame f = new JFrame("Path Finder");
 		  BufferedImage myImage = null;
 		  try {
-		      myImage = ImageIO.read(new File("res/background.png"));
+		      myImage = ImageIO.read(new File("src/main/resources/background.png"));
 		  } catch (Exception ex) {}
 		  f.setSize(1520, 1050);
 		  f.setResizable(false);
@@ -27,14 +27,14 @@ public class MainJFrame extends JFrame
 		  JPanel westPanel = new JPanel(); // new FlowLayout not needed
 		  westPanel.setOpaque(false);
 		  westPanel.setBorder(BorderFactory.createEmptyBorder(350, 170, 0, 0));
-		  JButton bCreateMap = new JButton(new ImageIcon("res/create_map.png"));
+		  JButton bCreateMap = new JButton(new ImageIcon("src/main/resources/create_map.png"));
 		  bCreateMap.setBorderPainted(false);
 		  bCreateMap.setContentAreaFilled(false);
 		  bCreateMap.setFocusPainted(false);
 		  bCreateMap.setOpaque(false);
 		  bCreateMap.setSize(550, 150);
 		  bCreateMap.setBounds(100,100,550,150);
-		  bCreateMap.setPressedIcon(new ImageIcon("res/create_map_clicked.png"));
+		  bCreateMap.setPressedIcon(new ImageIcon("src/main/resources/create_map_clicked.png"));
 		  //button.setPreferredSize(new Dimension(1050, 250)); // ?? I don't like this.
 		  westPanel.add(bCreateMap);
 		  p.add(westPanel, BorderLayout.WEST);
@@ -44,14 +44,14 @@ public class MainJFrame extends JFrame
 		  JPanel eastPanel = new JPanel(); // new FlowLayout not needed
 		  eastPanel.setOpaque(false);
 		  eastPanel.setBorder(BorderFactory.createEmptyBorder(350, 0, 0, 170));
-		  JButton bRunAlgorithm = new JButton(new ImageIcon("res/run_algorithm.png"));
+		  JButton bRunAlgorithm = new JButton(new ImageIcon("src/main/resources/run_algorithm.png"));
 		  bRunAlgorithm.setBorderPainted(false);
 		  bRunAlgorithm.setContentAreaFilled(false);
 		  bRunAlgorithm.setFocusPainted(false);
 		  bRunAlgorithm.setOpaque(false);
 		  bRunAlgorithm.setSize(550, 150);
 		  bRunAlgorithm.setBounds(100,100,550,150);
-		  bRunAlgorithm.setPressedIcon(new ImageIcon("res/run_algorithm_clicked.png"));
+		  bRunAlgorithm.setPressedIcon(new ImageIcon("src/main/resources/run_algorithm_clicked.png"));
 		  //button.setPreferredSize(new Dimension(1050, 250)); // ?? I don't like this.
 		  eastPanel.add(bRunAlgorithm);
 		  p.add(eastPanel, BorderLayout.EAST);
@@ -61,14 +61,14 @@ public class MainJFrame extends JFrame
 		  JPanel southPanel = new JPanel(); // new FlowLayout not needed
 		  southPanel.setOpaque(false);
 		  southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 300, 0));
-		  JButton bRunStatistics = new JButton(new ImageIcon("res/run_statistics.png"));
+		  JButton bRunStatistics = new JButton(new ImageIcon("src/main/resources/run_statistics.png"));
 		  bRunStatistics.setBorderPainted(false);
 		  bRunStatistics.setContentAreaFilled(false);
 		  bRunStatistics.setFocusPainted(false);
 		  bRunStatistics.setOpaque(false);
 		  bRunStatistics.setSize(550, 150);
 		  bRunStatistics.setBounds(100,100,550,150);
-		  bRunStatistics.setPressedIcon(new ImageIcon("res/run_statistics_clicked.png"));
+		  bRunStatistics.setPressedIcon(new ImageIcon("src/main/resources/run_statistics_clicked.png"));
 		  //button.setPreferredSize(new Dimension(1050, 250)); // ?? I don't like this.
 		  southPanel.add(bRunStatistics);
 		  p.add(southPanel, BorderLayout.SOUTH);

@@ -97,8 +97,8 @@ public class ImageGridMapCreator implements IGridMapCreator {
 //		try {
 //			//Get file from resources folder
 ////			ClassLoader classLoader = getClass().getClassLoader();
-////			File mapFile = new File(classLoader.getResource("/res/" + fileName).getFile());
-//			File mapFile = new File("res/" + fileName);
+////			File mapFile = new File(classLoader.getResource("/resources/" + fileName).getFile());
+//			File mapFile = new File("resources/" + fileName);
 //		    img = ImageIO.read(mapFile);
 //		} 
 //		catch (IOException e) {

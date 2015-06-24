@@ -7,11 +7,13 @@ import pathfinder.representations.maps.GridMap;
 import pathfinder.representations.primitives.Edge;
 import pathfinder.representations.primitives.Point;
 import pathfinder.draw.GUIDrawer;
+import pathfinder.graphicInterface.CreateMapJFrame;
 import pathfinder.utils.gridMapCreator.ImageGridMapCreator;
 
 public class Main {
 	public static void main(String[] args)  {
 	
+		
 		ImageGridMapCreator fmc = new ImageGridMapCreator();
 		GridMap map = fmc.createMap();
 		

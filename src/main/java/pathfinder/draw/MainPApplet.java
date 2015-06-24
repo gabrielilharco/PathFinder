@@ -2,6 +2,7 @@ package pathfinder.draw;
 
 import java.util.Iterator;
 
+
 import pathfinder.representations.graph.Path;
 import pathfinder.representations.maps.GridMap;
 import pathfinder.representations.primitives.Point;
