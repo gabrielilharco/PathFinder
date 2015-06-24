@@ -12,13 +12,13 @@ public class MainPApplet extends PApplet{
 	 
 		private final int u = 1;
 		private GridMap map;
-		private Path path;
+		private Path<Point> path;
 		private int width, height;
 		private boolean variableSet = false;
 		private boolean drawnMap = false;
 		private static final long serialVersionUID = 1L;
 		
-		public MainPApplet (Path p, GridMap m) {
+		public MainPApplet (Path<Point> p, GridMap m) {
 			height = m.height;
 			width = m.width;
 			map = m;
@@ -31,7 +31,7 @@ public class MainPApplet extends PApplet{
 			height = 1500;
 			width = 1500;
 			map = new GridMap();
-			path = new Path();
+			path = new Path<Point>();
 			variableSet = false;
 			drawnMap = false;
 		}
@@ -94,7 +94,7 @@ public class MainPApplet extends PApplet{
 			//System.out.println(variableSet);
 		}
 		
-		public void setVariables(Path p, GridMap m) {
+		public void setVariables(Path<Point> p, GridMap m) {
 			path = p;
 			map = m;
 			height = m.height;

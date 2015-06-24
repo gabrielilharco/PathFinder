@@ -5,7 +5,33 @@
 		<image_file>src/main/resources/map1.jpg</image_file>
 		<text_file>src/main/resources/map.txt</text_file>
 	</map>
-	<images id="1002">
-		<background>src/main/resources/background.png</background>
-	</images>
+	<backgrounds id="1002">
+		<main>src/main/resources/images/backgrounds/background.png</main>
+		<map_creator>src/main/resources/images/backgrounds/map_creator_background.png</map_creator>
+		<choose_algorithm>src/main/resources/images/backgrounds/choose_algorithm_background.png</choose_algorithm>
+	</backgrounds>
+	<buttons id= "1003">
+		<a_star>src/main/resources/images/buttons/a_star.png</a_star>
+		<a_star_clicked>src/main/resources/images/buttons/a_star_clicked.png</a_star_clicked>
+		<back>src/main/resources/images/buttons/back.png</back>
+		<back_clicked>src/main/resources/images/buttons/back_clicked.png</back_clicked>
+		<create_map>src/main/resources/images/buttons/create_map.png</create_map>
+		<create_map_clicked>src/main/resources/images/buttons/create_map_clicked.png</create_map_clicked>
+		<dfs>src/main/resources/images/buttons/dfs.png</dfs>
+		<dfs_clicked>src/main/resources/images/buttons/dfs_clicked.png</dfs_clicked>
+		<dijkstra>src/main/resources/images/buttons/dijkstra.png</dijkstra>
+		<dijkstra_clicked>src/main/resources/images/buttons/dijkstra_clicked.png</dijkstra_clicked>
+		<draw_map>src/main/resources/images/buttons/draw_map.png</draw_map>
+		<draw_map_clicked>src/main/resources/images/buttons/draw_map_clicked.png</draw_map_clicked>
+		<from_file_clicked>src/main/resources/images/buttons/from_file_clicked.png</from_file_clicked>
+		<from_file>src/main/resources/images/buttons/from_file.png</from_file>
+		<from_image>src/main/resources/images/buttons/from_image.png</from_image>
+		<from_image_clicked>src/main/resources/images/buttons/from_image_clicked.png</from_image_clicked>
+		<run_algorithm>src/main/resources/images/buttons/run_algorithm.png</run_algorithm>
+		<run_algorithm_clicked>src/main/resources/images/buttons/run_algorithm_clicked.png</run_algorithm_clicked>
+		<run_statistics>src/main/resources/images/buttons/run_statistics.png</run_statistics>
+		<run_statistics_clicked>src/main/resources/images/buttons/run_statistics_clicked.png</run_statistics_clicked>
+		<waypoints>src/main/resources/images/buttons/waypoints.png</waypoints>
+		<waypoints_clicked>src/main/resources/images/buttons/waypoints_clicked.png</waypoints_clicked>
+	</buttons>
 </pathfinder>
