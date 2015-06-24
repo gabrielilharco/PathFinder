@@ -1,44 +1,20 @@
 package algorithm;
 
-import java.util.HashMap;
 import java.util.Stack;
 
 import representations.graph.IGraph;
 import representations.graph.Path;
 
-public class DepthFirstSearch<E> implements IAlgorithm<E> {
-	// algorithm data structures
-	private HashMap<E, E> _parents;
-	private HashMap<E, Boolean> _visited;
-	private Path<E> _path;
-
-	private IGraph<E> _graph;
-	private E _origin;
-	private E _destination;
-	private boolean _foundDestination;
+public class DepthFirstSearch<E> 
+	extends AbstractPathFinder<E> {
 
 	public DepthFirstSearch() {
-		_parents = new HashMap<E, E>();
-		_visited = new HashMap<E, Boolean>();
-		_path = new Path<E>();
-
-		// //TODO - local variable not used?
-		// for (E v : _visited.keySet()) {
-		// _visited.put(v, false);
-		// }
-
-		_origin = null;
-		_destination = null;
-		_foundDestination = false;
+		super();
 	}
 
 	public Path<E> run(IGraph<E> graph, E origin, E destination) {
-		// TODO check if origin exists in graph
-		_origin = origin;
-		_destination = destination;
-		_graph = graph;
-
-		markVertexParent(origin, origin);
+		initialize(graph, origin, destination);
+		
 		runSearch(_origin);
 
 		if (_foundDestination) {
@@ -67,7 +43,7 @@ public class DepthFirstSearch<E> implements IAlgorithm<E> {
 		}
 	}
 
-	private void generatePath() {
+	protected void generatePath() {
 		Stack<E> s = new Stack<E>();
 
 		// start the inverse path from destination
@@ -81,21 +57,5 @@ public class DepthFirstSearch<E> implements IAlgorithm<E> {
 		while (!s.empty()) {
 			_path.add(s.pop());
 		}
-	}
-
-	private void markVertexAsVisited(E vertex) {
-		_visited.put(vertex, true);
-	}
-
-	private void markVertexParent(E vertex, E parent) {
-		_parents.put(vertex, parent);
-	}
-
-	private boolean vertexIsVisited(E vertex) {
-		return _visited.containsKey(vertex) && _visited.get(vertex);// _visited.get(vertex);
-	}
-
-	private E parentVertex(E vertex) {
-		return _parents.get(vertex);
 	}
 }

@@ -40,7 +40,7 @@ public class Main {
 		graph.addEdge(1, 2);
 		graph.addEdge(2, 1);
 		graph.addEdge(2, 3);
-//		graph.addEdge(1, 4);
+		graph.addEdge(1, 4);
 		graph.addEdge(3, 5);
 		graph.addEdge(5, 4);
 		
