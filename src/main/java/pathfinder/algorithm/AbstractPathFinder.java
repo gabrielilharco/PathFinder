@@ -1,6 +1,7 @@
 package pathfinder.algorithm;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
@@ -28,16 +29,16 @@ abstract public class AbstractPathFinder<E>
 	}
 	
 	abstract public Path<E> run(IGraph<E> graph, E origin, E destination);
-	
-	abstract protected void generatePath();
-	
+		
 	protected void initialize(IGraph<E> graph, E origin, E destination) {
-		// TODO check if origin exists in graph
+		graph.validateVertex(origin);
+		graph.validateVertex(destination);
+		
 		_origin = origin;
 		_destination = destination;
 		_graph = graph;
 
-		markVertexParent(origin, origin);
+		markVertexParent(_origin, _origin);
 	}
 
 	protected void markVertexAsVisited(E vertex) {
@@ -49,10 +50,26 @@ abstract public class AbstractPathFinder<E>
 	}
 
 	protected boolean vertexIsVisited(E vertex) {
-		return _visited.containsKey(vertex) && _visited.get(vertex);// _visited.get(vertex);
+		return _visited.containsKey(vertex) && _visited.get(vertex);
 	}
 
 	protected E parentVertex(E vertex) {
 		return _parents.get(vertex);
+	}
+	
+	protected void generatePath() {
+		Stack<E> s = new Stack<E>();
+
+		// start the inverse path from destination
+		E current = _destination;
+		while (!parentVertex(current).equals(current)) {
+			s.push(current);
+			current = parentVertex(current);
+		}
+		s.push(current);
+		
+		while (!s.empty()) {
+			_path.add(s.pop());
+		}
 	}
 }

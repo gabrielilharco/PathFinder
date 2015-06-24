@@ -8,22 +8,20 @@ public abstract class AbstractUndirectedGraph<V> {
 	protected int _E;
 	protected HashMap<V, AdjacencyList<V> > _adj;
 	
+	
+	public void addVertex(V v) {
+		_adj.put(v, new AdjacencyList<V>());
+		_V++;
+	}
+	
 	public void addEdge(V v1, V v2) {
-//		System.out.println(ori.hashCode());
+		validateVertex(v1);
+		validateVertex(v2);
 
-		if (!_adj.containsKey(v1)) {
-			_V++;
-			_adj.put(v1, new AdjacencyList<V>());
-		}
-		
-		if (!_adj.containsKey(v2)) {
-			_V++;
-			_adj.put(v2, new AdjacencyList<V>());
-		}
-		
-		_E++;
-		
+		//Undirected edges
 		_adj.get(v1).add(v2);
+		_adj.get(v2).add(v1);
+		_E++;
 	}
 	
 	protected AbstractUndirectedGraph () {
@@ -50,7 +48,7 @@ public abstract class AbstractUndirectedGraph<V> {
 		return _E;
 	}
 	
-	protected void validateVertex(V v) {
+	public void validateVertex(V v) {
 		if (!_adj.containsKey(v))
 			throw new NoSuchElementException();
 	}

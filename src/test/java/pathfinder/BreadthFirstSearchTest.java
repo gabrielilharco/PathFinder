@@ -3,38 +3,40 @@
  */
 package pathfinder;
 
+
+import pathfinder.algorithm.BreadthFirstSearch;
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
-import pathfinder.algorithm.DepthFirstSearch;
 
 /**
  * @author muzio
  *
  */
-public class DepthFirstSearchTest
+public class BreadthFirstSearchTest
 	extends PathFinderTestCase {
 
 	
 	public Path<String> findPathBetween(IGraph<String> g, 
 		 					String ori,
 		 					String dest) {
-		DepthFirstSearch<String> dfs =
-				new DepthFirstSearch<String>();
+		BreadthFirstSearch<String> dfs =
+				new BreadthFirstSearch<String>();
 		
 		return dfs.run(g, ori, dest);
 	}
-
+	
 	public void testRun1() {
 		IGraph<String> g = createGraph();
 		
 		Path<String> path = findPathBetween(g, V1, V2);
 		
-		assertEquals("v1-v4-v5-v3-v2-", path.toString());
+		assertEquals("v1-v2-", path.toString());
 	}
 	
 	public void testRun2() {
 		IGraph<String> g = createGraph();
 		
+		//no path between V1 and V6
 		Path<String> path = findPathBetween(g, V1, V6);
 		
 		assertEquals("", path.toString());

@@ -14,8 +14,13 @@ public class WeightedGraphTest {
 	private WeightedGraph<Integer> createIntGraph1 () {
 		WeightedGraph<Integer> graph = new WeightedGraph<Integer>();
 		
+		graph.addVertex(1);
+		graph.addVertex(2);
+		graph.addVertex(3);
+		graph.addVertex(4);
+		graph.addVertex(5);
+		
 		graph.addEdge(1, 2);
-		graph.addEdge(2, 1);
 		graph.addEdge(2, 3);
 		graph.addEdge(1, 4);
 		graph.addEdge(3, 5);
@@ -29,7 +34,7 @@ public class WeightedGraphTest {
 		WeightedGraph<Integer> graph = createIntGraph1();
 
 		assertEquals(5, graph.V());
-		assertEquals(6, graph.E());
+		assertEquals(5, graph.E());
 	}
 	
 	@Test
@@ -37,7 +42,7 @@ public class WeightedGraphTest {
 		WeightedGraph<Integer> graph = createIntGraph1();
 		
 		assertEquals(2 , graph.degree(1));
-		assertEquals(1, graph.degree(3));
+		assertEquals(2, graph.degree(3));
 	}
 	
 	@Test(expected=NoSuchElementException.class)

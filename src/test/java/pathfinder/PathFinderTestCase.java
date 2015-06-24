@@ -13,19 +13,22 @@ public abstract class PathFinderTestCase
    	static final String V3 = "v3";
    	static final String V4 = "v4";
    	static final String V5 = "v5";
+   	static final String V6 = "v6";
    
-   	
-   	public void testConstructor() {
-   		
-   	}
-   	
    	abstract public Path<String> findPathBetween(IGraph<String> g, 
    									 		String ori,
    									 		String dest);
    	
    	protected IGraph<String> createGraph() {
    		WeightedGraph<String> g = new WeightedGraph<String>();
-		
+   		
+   		g.addVertex(V1);
+   		g.addVertex(V2);
+   		g.addVertex(V3);
+   		g.addVertex(V4);
+   		g.addVertex(V5);
+   		g.addVertex(V6);
+   		
 		g.addEdge(V1, V2);
 		g.addEdge(V2, V1);
 		g.addEdge(V2, V3);
@@ -35,4 +38,6 @@ public abstract class PathFinderTestCase
 		
 		return g;
    	}
+   	
+   	
 }
