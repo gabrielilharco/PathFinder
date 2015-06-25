@@ -27,7 +27,6 @@ public class WeightedGraph<V>
 	public void setEdgeWeight(Edge<V> edge, double weight) {
 		validateVertex(edge.getV1());
 		validateVertex(edge.getV2());
-		System.out.println(edge.hashCode());
 		
 		_weightMap.put(edge, weight);
 	}

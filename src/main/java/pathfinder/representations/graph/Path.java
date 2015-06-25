@@ -5,26 +5,48 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Path<E> implements Iterable<E>{
-	private ArrayList<E> elements;
+	private ArrayList<E> _elements;
+	private double _totalWeight;
 	
 	public Path () {
-		elements = new ArrayList<E>();
+		_elements = new ArrayList<E>();
+		_totalWeight = 0.0;
 	}
 	
 	public Iterator<E> iterator() {
-		return elements.iterator();
+		return _elements.iterator();
 	}
 	
 	public void add(E elem) {
-		elements.add(elem);
+		_elements.add(elem);
 	}
 	
 	public int size() {
-		return elements.size();
+		return _elements.size();
 	}
 	
 	public List<E> getPath() {
-		return elements;
+		return _elements;
+	}
+	
+	public double getTotalWeight() {
+		return _totalWeight;
+	}
+
+	public void setTotalWeight(double pathWeight) {
+		_totalWeight = pathWeight;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (E s : _elements) {
+		    sb.append(s);
+		    sb.append('-');
+		}
+		return sb.toString();
 	}
 	
 	@Override
@@ -38,11 +60,11 @@ public class Path<E> implements Iterable<E>{
 	     
 	    Path<?> other = (Path<?>)obj;
 	    
-	    return this.elements.equals(other.getPath());
+	    return this._elements.equals(other.getPath());
 	}
 	
 	@Override
 	public int hashCode () {
-		return this.elements.hashCode();
+		return this._elements.hashCode();
 	}
 }

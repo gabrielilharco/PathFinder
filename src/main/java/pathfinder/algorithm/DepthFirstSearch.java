@@ -1,7 +1,5 @@
 package pathfinder.algorithm;
 
-import java.util.Stack;
-
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
@@ -15,7 +13,7 @@ public class DepthFirstSearch<E>
 	public Path<E> run(IGraph<E> graph, E origin, E destination) {
 		initialize(graph, origin, destination);
 		
-		runSearch(_origin);
+		runRecursiveSearch(_origin);
 
 		if (_foundDestination) {
 			generatePath();
@@ -25,7 +23,7 @@ public class DepthFirstSearch<E>
 		return _path;
 	}
 
-	private void runSearch(E current) {
+	private void runRecursiveSearch(E current) {
 		markVertexAsVisited(current);
 
 		// TODO - equals
@@ -34,28 +32,12 @@ public class DepthFirstSearch<E>
 			return;
 		}
 
-		// iterate over current neighbors
+		// iterate over current's neighbors
 		for (E neigh : _graph.adj(current)) {
 			if (!vertexIsVisited(neigh)) {
 				markVertexParent(neigh, current);
-				runSearch(neigh);
+				runRecursiveSearch(neigh);
 			}
-		}
-	}
-
-	protected void generatePath() {
-		Stack<E> s = new Stack<E>();
-
-		// start the inverse path from destination
-		E current = _destination;
-		while (!parentVertex(current).equals(current)) {
-			s.push(current);
-			current = parentVertex(current);
-		}
-		s.push(current);
-
-		while (!s.empty()) {
-			_path.add(s.pop());
 		}
 	}
 }

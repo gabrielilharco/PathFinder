@@ -7,4 +7,5 @@ public interface IGraph<V> {
 	
 	public int V ();
 	public int E ();
+	public void validateVertex(V v);
 }
