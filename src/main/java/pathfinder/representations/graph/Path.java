@@ -6,9 +6,11 @@ import java.util.List;
 
 public class Path<E> implements Iterable<E>{
 	private ArrayList<E> _elements;
+	private double _totalWeight;
 	
 	public Path () {
 		_elements = new ArrayList<E>();
+		_totalWeight = 0.0;
 	}
 	
 	public Iterator<E> iterator() {
@@ -26,6 +28,16 @@ public class Path<E> implements Iterable<E>{
 	public List<E> getPath() {
 		return _elements;
 	}
+	
+	public double getTotalWeight() {
+		return _totalWeight;
+	}
+
+	public void setTotalWeight(double pathWeight) {
+		_totalWeight = pathWeight;
+	}
+
+	
 	
 	@Override
 	public String toString() {

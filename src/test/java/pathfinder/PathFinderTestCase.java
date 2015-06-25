@@ -36,6 +36,12 @@ public abstract class PathFinderTestCase
 		g.addEdge(V3, V5);
 		g.addEdge(V5, V4);
 		
+		g.setEdgeWeight(V1, V2, 5);
+		g.setEdgeWeight(V1, V4, 1);
+		g.setEdgeWeight(V2, V3, 3);
+		g.setEdgeWeight(V3, V5, 2);
+		g.setEdgeWeight(V5, V4, 12);
+		
 		return g;
    	}
    	
