@@ -3,31 +3,27 @@ package pathfinder.graphicInterface;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import pathfinder.graphicInterface.buttonListeners.MainButtonListener;
 import pathfinder.utils.ConfigManager;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
-public class ChooseAlgorithmJFrame extends JFrame
+public class ChooseAlgorithmJPanel extends ImagePanel
 {
-	public ChooseAlgorithmJFrame()
+	
+	public ChooseAlgorithmJPanel()
 	{
-		  JFrame f = new JFrame("Path Finder");
-		  BufferedImage myImage = null;
-		  try {
-		      myImage = ImageIO.read(new File(ConfigManager.getChooseAlgorithmBackgroundName()));
-		  } catch (Exception ex) {}
-		  f.setSize(1520, 1050);
-		  f.setResizable(false);
+		  //super("Path Finder");
+		  super(Backgrounds.getChooseAlgorithmBackground());
+		  //setSize(1520, 1050);
+		  //setResizable(false);
 		  
-		  JPanel mainPanel = new ImagePanel(myImage);
-
-		  BoxLayout mainBoxLayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS); // top to bottom
-		  mainPanel.setLayout(mainBoxLayout);
+		  BoxLayout mainBoxLayout = new BoxLayout(this, BoxLayout.Y_AXIS); // top to bottom
+		  setLayout(mainBoxLayout);
 		  
-		
-		  
-		  JPanel secPanel = new JPanel(); // new FlowLayout not needed
+		  JPanel secPanel = new JPanel();
 		  BoxLayout secBoxLayout = new BoxLayout(secPanel, BoxLayout.X_AXIS); // top to bottom
 		  secPanel.setLayout(secBoxLayout);
 		  secPanel.setOpaque(false);
@@ -46,10 +42,10 @@ public class ChooseAlgorithmJFrame extends JFrame
 		  p2.add(bDijkstra);
 		  secPanel.add(p2);
 		  
-		  mainPanel.add(secPanel);
+		  add(secPanel);
 
 		  
-		  JPanel thPanel = new JPanel(); // new FlowLayout not needed
+		  JPanel thPanel = new JPanel(); 
 		  BoxLayout thBoxLayout = new BoxLayout(thPanel, BoxLayout.X_AXIS); // top to bottom
 		  thPanel.setLayout(thBoxLayout);
 		  thPanel.setOpaque(false);
@@ -68,20 +64,21 @@ public class ChooseAlgorithmJFrame extends JFrame
 		  p4.add(bWaypoint);
 		  thPanel.add(p4);
 		  
-		  mainPanel.add(thPanel);
+		  add(thPanel);
 		  
 		  JPanel p5 = new JPanel();
 		  p5.setOpaque(false);
 		  p5.setBorder(BorderFactory.createEmptyBorder(90, 0, 0, 1300));
 		  JButton bBack = new ImageButton(ConfigManager.getBackName(),ConfigManager.getBackClickedName());
 		  p5.add(bBack);
-		  mainPanel.add(p5);
+		  bBack.addActionListener(new MainButtonListener());
+		  add(p5);
 		  
-		  f.add(mainPanel);
+		  
 		  
 		  //f.pack(); // call after everything has been added
-		  f.setLocationRelativeTo(null); // to center
-		  f.setVisible(true);
+		  //setLocationRelativeTo(null); // to center
+		  setVisible(true);
 	}
 
 }

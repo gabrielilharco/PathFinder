@@ -1,5 +1,7 @@
 package pathfinder.main;
 
+import java.io.IOException;
+
 import pathfinder.algorithm.DepthFirstSearch;
 import pathfinder.representations.graph.Path;
 import pathfinder.representations.graph.WeightedGraph;
@@ -7,15 +9,19 @@ import pathfinder.representations.maps.GridMap;
 import pathfinder.representations.primitives.Edge;
 import pathfinder.representations.primitives.Point;
 import pathfinder.draw.GUIDrawer;
-import pathfinder.graphicInterface.ChooseAlgorithmJFrame;
-import pathfinder.graphicInterface.CreateMapJFrame;
+import pathfinder.graphicInterface.ChooseAlgorithmJPanel;
+import pathfinder.graphicInterface.CreateMapJPanel;
 import pathfinder.graphicInterface.MainJFrame;
 import pathfinder.utils.gridMapCreator.ImageGridMapCreator;
 
 public class Main {
 	public static void main(String[] args)  {
 	
-		new MainJFrame();
+		try {
+			new MainJFrame();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 //		ImageGridMapCreator fmc = new ImageGridMapCreator();
 //		GridMap map = fmc.createMap();
 //		
