@@ -12,6 +12,30 @@ public class Rectangle {
 			_lower = lower;
 		}
 	}
+	
+	public Rectangle(int xUpper, int yUpper, int xLower, int yLower) {
+		Point upper = new Point(xUpper, yUpper);
+		Point lower = new Point(xLower, yLower);
+		if (validRectangle(lower, upper)) {
+			_upper = upper;
+			_lower = lower;
+		}
+	}
+	
+	public boolean isInside(Rectangle outer) {
+		float midX = (_lower.getX() + _upper.getX())/2;
+		float midY = (_lower.getY() + _upper.getY())/2;
+//		System.out.println("midx= " + midX);
+//		System.out.println("midy= " + midY);
+//		System.out.println(outer);
+		if (outer.getUpper().getX() < midX && midX < outer.getLower().getX() &&
+			outer.getUpper().getY() < midY && midY < outer.getLower().getY()) {
+			return true;
+		}
+		else {
+			return false;			
+		}
+	}
 
 	public Point getUpper() {
 		return _upper;

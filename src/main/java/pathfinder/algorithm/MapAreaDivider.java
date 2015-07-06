@@ -4,16 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
 import pathfinder.representations.graph.Graph;
+import pathfinder.representations.graph.WeightedGraph;
 import pathfinder.representations.maps.VertexMap;
 import pathfinder.representations.primitives.LineInfo;
 import pathfinder.representations.primitives.Rectangle;
+import pathfinder.representations.primitives.Vertex;
 
 public class MapAreaDivider {
 	private VertexMap _map;
-	private Graph<Rectangle> _graph;
+	private WeightedGraph<Rectangle> _graph;
 	private TreeMap<Integer, List<LineInfo>> _verticalLines;
 	private TreeMap<Integer, List<LineInfo>> _horizontalLines;
 	
@@ -28,7 +31,7 @@ public class MapAreaDivider {
 		_graph = generateCorrespondentGraph();
 	}
 	
-	public Graph<Rectangle> getGraph() {
+	public WeightedGraph<Rectangle> getGraph() {
 		return _graph;
 	}
 
@@ -83,12 +86,61 @@ public class MapAreaDivider {
 	}
 	
 	private void removeDuplicateSegments() {
-		// TODO???
+		// TODO
 	}
 
-	private Graph<Rectangle> generateCorrespondentGraph() {
-		// TODO
-		return null;
+	// TODO: this function is returning a full array of rectangles 
+	// instead of just the rectangles that were found by the
+	// removeSegmentsIntersectingObstacles method
+	private WeightedGraph<Rectangle> generateCorrespondentGraph() {
+		WeightedGraph<Rectangle> graph = new WeightedGraph<Rectangle>();
+		Rectangle[][] rectMap;
+		Map<Integer, List<LineInfo>> vertPositiveLines;
+		Map<Integer, List<LineInfo>> horizPositiveLines;
+		vertPositiveLines = _verticalLines.subMap(0, false, _map.width, true);
+		horizPositiveLines = _horizontalLines.subMap(0, false, _map.height, true);
+		rectMap = new Rectangle[vertPositiveLines.size()][horizPositiveLines.size()];
+		int prevVertLine = 0;
+		int prevHorizLine = 0;
+		int i = 0;
+		int j = 0;
+		for (int vert : vertPositiveLines.keySet()) {
+			j = 0;
+			prevHorizLine = 0;
+			for (int horiz : horizPositiveLines.keySet()) {
+				rectMap[i][j] = new Rectangle(prevVertLine, prevHorizLine, vert, horiz);
+				boolean isObstacle = false;
+				for (Rectangle obstacle : _map.obstacleList()) {
+					if (rectMap[i][j].isInside(obstacle)) {
+						isObstacle = true;
+						break;
+					}
+				}
+				if (!isObstacle) {
+					graph.addVertex(rectMap[i][j]);					
+				}
+				if (i > 0) {
+					try {
+						graph.addEdge(rectMap[i][j], rectMap[i - 1][j]);
+						graph.setEdgeWeight(rectMap[i][j], rectMap[i - 1][j], 1.0);
+					} catch (NoSuchElementException e) {	}
+				}
+				if (j > 0) {
+					try {
+						graph.addEdge(rectMap[i][j], rectMap[i][j - 1]);
+						graph.setEdgeWeight(rectMap[i][j], rectMap[i][j - 1], 1.0);		
+					} catch (NoSuchElementException e) {	}	
+				}
+				prevHorizLine = horiz;
+				j++;
+			}			
+			prevVertLine = vert;
+			i++;
+		}		
+//		for (Rectangle r : graph.adj(rectMap[2][3])) {
+//			System.out.println(r);
+//		}
+		return graph;
 	}
 	
 	
