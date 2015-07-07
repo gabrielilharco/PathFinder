@@ -9,11 +9,12 @@ import pathfinder.utils.ConfigManager;
 
 import javax.imageio.ImageIO;
 
-public class ImageGridMapCreator implements IGridMapCreator {
+public class ImageGridMapCreator extends AbstractGridMapCreator {
 	public GridMap createMap (){
 		try {
 			
 			String fileName = ConfigManager.getImageMapName();
+			System.out.println(fileName);
 			
 			BufferedImage image = null;
 			
@@ -25,6 +26,8 @@ public class ImageGridMapCreator implements IGridMapCreator {
 
 			int mWidth = image.getWidth();
 			int mHeight = image.getHeight();
+			System.out.println(mWidth);
+			System.out.println(mHeight);
 			
 			GridMap map = new GridMap(mWidth, mHeight); 
 			for (int y = 0; y < mHeight; y++) {
@@ -36,10 +39,10 @@ public class ImageGridMapCreator implements IGridMapCreator {
                 	int blue = rgb & 0x000000ff;
 					
 					if (red >= 0x000000e0 && green >= 0x000000e0 && blue >= 0x000000e0) { // if it's black-ish
-						map.isObstacle[x][y] = true;
+						map.isObstacle[x][y] = false;
 					}
 					else {
-						map.isObstacle[x][y] = false;
+						map.isObstacle[x][y] = true;
 					}
 				}
 			}

@@ -1,14 +1,7 @@
 package pathfinder.graphicInterface;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import pathfinder.utils.ConfigManager;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class MainJFrame extends JFrame

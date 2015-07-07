@@ -8,7 +8,7 @@ import pathfinder.representations.primitives.Point;
 import pathfinder.representations.primitives.Rectangle;
 import pathfinder.utils.ConfigManager;
 
-public class TextFileVertexMapCreator implements IVertexMapCreator {
+public class TextFileVertexMapCreator extends AbstractVertexMapCreator {
 
 	@Override
 	public VertexMap createMap() {

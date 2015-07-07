@@ -8,7 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class TextFileGridMapCreator implements IGridMapCreator {
+public class TextFileGridMapCreator extends AbstractGridMapCreator {
 	public GridMap createMap (){
 		
 		String fileName = ConfigManager.getTextMapName();
@@ -58,7 +58,5 @@ public class TextFileGridMapCreator implements IGridMapCreator {
 				return null;
 			}
 		}
-		
-	
 	}
 }

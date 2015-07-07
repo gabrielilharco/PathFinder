@@ -36,7 +36,7 @@ public class AStarSearch<V>
 			}
 			
 			//important check: avoid analyzing same vertex twice
-			if (currentDist  > getVertexDistance(current));
+			//if (currentDist  > getVertexDistance(current)+ _h.f(current, _destination)) continue;
 			for (V neigh : graph.adj(current)) {
 				double currDist = getVertexDistance(current);
 				double neighDist = getVertexDistance(neigh);
@@ -44,8 +44,8 @@ public class AStarSearch<V>
 				
 				if (currDist + edgeWeight < neighDist) {
 					markVertexParent(neigh, current);
-					setVertexDistance(neigh, currDist + edgeWeight + _h.f(neigh, _destination));
-					_pq.add(new Pair<Double, V>(currDist + edgeWeight, neigh));
+					setVertexDistance(neigh, currDist + edgeWeight);
+					_pq.add(new Pair<Double, V>(currDist + edgeWeight + _h.f(neigh, _destination), neigh));
 				}
 			}
 		}

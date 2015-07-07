@@ -28,8 +28,8 @@ public class Edge<V> {
 	     
 	    Edge<?> other = (Edge<?>)obj; 
 	     
-	    return this._v1 == other.getV1() && 
-	    		this._v2 == other.getV2();
+	    return this._v1.equals(other.getV1()) && 
+	    		this._v2.equals(other.getV2());
 	}
 	
 	@Override

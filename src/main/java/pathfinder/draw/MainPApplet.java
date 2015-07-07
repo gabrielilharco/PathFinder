@@ -55,10 +55,10 @@ public class MainPApplet extends PApplet{
 				for (int x = 0; x < width-10; x+=10) {
 					for (int y = 0; y < height-10; y+=10) {
 						if (map.isObstacle[x][y]) {
-							fill(255);
+							fill(0,0,0);
 						}
 						else {
-							fill(0);
+							fill(255, 255, 255);
 						}
 						rect(x,y,x+10,y+10);
 						

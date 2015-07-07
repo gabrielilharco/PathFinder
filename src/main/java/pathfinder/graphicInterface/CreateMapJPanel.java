@@ -1,13 +1,10 @@
 package pathfinder.graphicInterface;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import pathfinder.graphicInterface.buttonListeners.MainButtonListener;
 import pathfinder.utils.ConfigManager;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class CreateMapJPanel extends ImagePanel
 {
