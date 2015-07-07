@@ -15,9 +15,11 @@ public class WaypointDrawer extends PApplet{
 	final int width = 400;
 	final int height = 300;
 	final String prefix = "teste01-";
+	final int ellipseRadius = Math.min(width, height) / 20;
 	
-	private byte state = CREATINGRECTS;
-	private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
+	private byte state;
+	private int iterationNumber;
+	private ArrayList<Rectangle> rectangles;
 	private VertexMap map;
 	private MapAreaDivider dividedMap;
 	
@@ -30,6 +32,9 @@ public class WaypointDrawer extends PApplet{
 	
 	public void setup() {
 		size(width, height);
+		state = CREATINGRECTS;
+		iterationNumber = 0;
+		rectangles = new ArrayList<Rectangle>();
 		start = null;
 		end = null;
 	}
@@ -89,10 +94,29 @@ public class WaypointDrawer extends PApplet{
 				
 			case WAITINGPOINTS:
 				if (start == null) {
+					drawWaypointMap();
 					start = new Point(mouseX, mouseY);
+					fill(0, 150, 0, 180);	
+					ellipse(mouseX, mouseY, ellipseRadius, ellipseRadius);
 				}
 				else {
 					end = new Point(mouseX, mouseY);
+					fill(230, 0, 0, 180);				
+					ellipse(mouseX, mouseY, ellipseRadius, ellipseRadius);
+										
+					///////////////////////////
+					/// Put grid logic here ///					
+					///////////////////////////
+					System.out.println("Iteration number " + iterationNumber + "\n" +
+										"Algorithms should be running and pictures along with\n" +
+										"statistics should be saved here!\n\n" +
+										"Insert start and end points again to run another\n" +
+										"time and save files with a different prefix (use\n" +
+										"iterationNumber variable)...\n\n");										
+					
+					start = null;
+					end = null;
+					iterationNumber++;
 				}
 				break;
 		}		
@@ -108,7 +132,7 @@ public class WaypointDrawer extends PApplet{
 				dividedMap = new MapAreaDivider(map);
 				drawWaypointMap();				
 				save(prefix + "2waypointMap.png");
-				state = WAITINGPOINTS;				
+				state = WAITINGPOINTS;	
 				break;
 				
 			case WAITINGPOINTS:
