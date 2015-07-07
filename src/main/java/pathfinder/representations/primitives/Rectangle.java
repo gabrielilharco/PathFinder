@@ -57,6 +57,14 @@ public class Rectangle {
 		}
 	}
 	
+	public int getWidth() {
+		return _lower.getX() - _upper.getX();
+	}
+	
+	public int getHeight() {
+		return _lower.getY() - _upper.getY();
+	}
+	
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(_upper);

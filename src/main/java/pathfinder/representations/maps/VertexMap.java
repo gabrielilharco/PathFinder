@@ -1,6 +1,7 @@
 package pathfinder.representations.maps;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pathfinder.representations.primitives.Rectangle;
 
@@ -8,13 +9,16 @@ public class VertexMap {
 	public final int height, width;
 	private ArrayList<Rectangle> _obstacles;
 		
-	public VertexMap (int width, int height) {
+	public VertexMap (int width, int height, List<Rectangle> obstacles) {
 		if (width <= 0 || height <= 0) {
 			throw new java.lang.IllegalArgumentException("Dimensions must be positive");
 		}
 		this.height = height;
 		this.width = width;
 		_obstacles = new ArrayList<Rectangle>();
+		for (Rectangle rectangle : obstacles) {
+			addRectangleObstacle(rectangle);
+		}
 	}
 	
 	public void addRectangleObstacle (Rectangle rectangle){

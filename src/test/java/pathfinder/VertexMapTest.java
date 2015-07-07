@@ -3,6 +3,8 @@ package pathfinder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -18,7 +20,7 @@ public class VertexMapTest {
 
 	@Test
 	public void testVertexMap() {
-		VertexMap map = new VertexMap(20, 30);
+		VertexMap map = new VertexMap(20, 30, new ArrayList<Rectangle>());
 		assertEquals(20, map.width);
 		assertEquals(30, map.height);
 		assertNotNull(map.obstacleList());
@@ -29,7 +31,7 @@ public class VertexMapTest {
 		Point p1 = new Point(30, 50);
 		Point p2 = new Point(60, 80);
 		Rectangle r = new Rectangle(p1, p2);
-		VertexMap map = new VertexMap(20, 30);
+		VertexMap map = new VertexMap(20, 30, new ArrayList<Rectangle>());
 		exception.expect(IllegalArgumentException.class);
 		map.addRectangleObstacle(r);
 	}
@@ -39,7 +41,7 @@ public class VertexMapTest {
 		Point p1 = new Point(6, 6);
 		Point p2 = new Point(12, 14);
 		Rectangle r = new Rectangle(p1, p2);
-		VertexMap map = new VertexMap(30, 20);
+		VertexMap map = new VertexMap(30, 20, new ArrayList<Rectangle>());
 		map.addRectangleObstacle(r);
 		p1 = new Point(18, 9);
 		p2 = new Point(27, 12);

@@ -40,6 +40,10 @@ public abstract class AbstractUndirectedGraph<V> {
 		return _adj.get(v);
 	}
 	
+	public Iterable<V> vertices() {
+		return _adj.keySet();
+	}
+	
 	public int V () {
 		return _V;
 	}

@@ -2,6 +2,8 @@ package pathfinder;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import pathfinder.algorithm.MapAreaDivider;
@@ -16,7 +18,7 @@ public class MapAreaDividerTest {
 		Point p1 = new Point(6, 6);
 		Point p2 = new Point(12, 14);
 		Rectangle r = new Rectangle(p1, p2);
-		VertexMap map = new VertexMap(30, 20);
+		VertexMap map = new VertexMap(30, 20, new ArrayList<Rectangle>());
 		map.addRectangleObstacle(r);
 		p1 = new Point(18, 9);
 		p2 = new Point(27, 12);
