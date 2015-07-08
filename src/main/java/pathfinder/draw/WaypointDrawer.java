@@ -3,6 +3,7 @@ package pathfinder.draw;
 import java.util.ArrayList;
 
 import pathfinder.algorithm.MapAreaDivider;
+import pathfinder.algorithm.WaypointAlgorithm;
 import pathfinder.representations.maps.VertexMap;
 import pathfinder.representations.primitives.Point;
 import pathfinder.representations.primitives.Rectangle;
@@ -29,6 +30,8 @@ public class WaypointDrawer extends PApplet{
 	private int rectLowerY;
 	private Point start;
 	private Point end;
+	private Rectangle startRect;
+	private Rectangle endRect;
 	
 	public void setup() {
 		size(width, height);
@@ -37,6 +40,8 @@ public class WaypointDrawer extends PApplet{
 		rectangles = new ArrayList<Rectangle>();
 		start = null;
 		end = null;
+		startRect = null;
+		endRect = null;
 	}
 	
 	public void draw() {
@@ -101,19 +106,31 @@ public class WaypointDrawer extends PApplet{
 				}
 				else {
 					end = new Point(mouseX, mouseY);
-					fill(230, 0, 0, 180);				
-					ellipse(mouseX, mouseY, ellipseRadius, ellipseRadius);
-										
-					///////////////////////////
-					/// Put grid logic here ///					
-					///////////////////////////
-					System.out.println("Iteration number " + iterationNumber + "\n" +
-										"Algorithms should be running and pictures along with\n" +
-										"statistics should be saved here!\n\n" +
-										"Insert start and end points again to run another\n" +
-										"time and save files with a different prefix (use\n" +
-										"iterationNumber variable)...\n\n");										
 					
+					WaypointAlgorithm algorithm = new WaypointAlgorithm(dividedMap.getGraph(),
+																			start, end);
+					fill(255, 255, 60);
+					for (Rectangle rectangle : algorithm.getRectPath()) {
+						rect(rectangle.getUpper().getX(), rectangle.getUpper().getY(),
+							 rectangle.getWidth(), rectangle.getHeight());
+					}
+					
+					fill(40, 40, 255, 180);
+					for (Point point : algorithm.getPointGraph().vertices()) {
+						ellipse(point.getX(), point.getY(), ellipseRadius/3, ellipseRadius/3);
+					}
+					
+					noFill();
+					beginShape();
+					for (Point point : algorithm.getPointPath()) {
+						vertex(point.getX(), point.getY());
+					}
+					endShape();
+
+					fill(0, 150, 0, 180);	
+					ellipse(start.getX(), start.getY(), ellipseRadius, ellipseRadius);
+					fill(230, 0, 0, 180);				
+					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
 					start = null;
 					end = null;
 					iterationNumber++;

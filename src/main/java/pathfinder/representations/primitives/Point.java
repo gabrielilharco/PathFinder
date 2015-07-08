@@ -19,6 +19,12 @@ public class Point {
 		this._y = _y;
 	}
 	
+	public double distanceTo(Point point) {
+		int dx = point.getX() - _x;
+		int dy = point.getY() - _y;
+		return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+	}
+	
 	public String toString() {
 		return "(" + _x + "," + _y + ")";
 	}

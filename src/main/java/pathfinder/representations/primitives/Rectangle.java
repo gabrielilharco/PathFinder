@@ -36,6 +36,22 @@ public class Rectangle {
 			return false;			
 		}
 	}
+	
+	public boolean contains(Point point) {
+		if (_upper.getX() <= point.getX() && point.getX() <= _lower.getX() &&
+			_upper.getY() <= point.getY() && point.getY() <= _lower.getY()) {
+			return true;
+		}
+		else {
+			return false;			
+		}
+	}
+	
+	public Point getCenter() {
+		int midX = (_lower.getX() + _upper.getX())/2;
+		int midY = (_lower.getY() + _upper.getY())/2;
+		return new Point(midX, midY);
+	}
 
 	public Point getUpper() {
 		return _upper;

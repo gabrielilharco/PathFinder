@@ -112,6 +112,7 @@ public class RectanglePathToEdgePoints {
 		for (Point curr : pointsA) {
 			for (Point last : pointsB) {
 				graph.addEdge(last, curr);
+				graph.setEdgeWeight(last, curr, curr.distanceTo(last));
 			}
 		}
 		
