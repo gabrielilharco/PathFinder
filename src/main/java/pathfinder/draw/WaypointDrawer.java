@@ -21,10 +21,10 @@ public class WaypointDrawer extends PApplet{
 	
 	static final byte CREATINGRECTS = 0, WAITINGPOINTS = 1;
 	
-	final int width = 600;
-	final int height = 400;
+	final int width = 300;
+	final int height = 200;
 	final String prefix = "teste01-";
-	final int ellipseRadius = Math.min(width, height) / 40;
+	final int ellipseRadius = Math.min(width, height) / 20;
 	
 	private byte state;
 	private int iterationNumber;
@@ -56,6 +56,8 @@ public class WaypointDrawer extends PApplet{
 	}
 	
 	public void draw() {
+//		System.out.println(mouseX);
+		
 		switch (state) {
 		
 			case CREATINGRECTS:
@@ -91,10 +93,30 @@ public class WaypointDrawer extends PApplet{
 			case CREATINGRECTS:
 				rectLowerX = mouseX;
 				rectLowerY = mouseY;
-				try {
+				if (rectLowerX > rectUpperX && rectLowerY > rectUpperY) {
+					if (rectLowerX > width - 1) rectLowerX = width - 1;
+					if (rectLowerY > height - 1) rectLowerY = height - 1;
 					rectangles.add(new Rectangle(rectUpperX, rectUpperY,
-												 rectLowerX, rectLowerY));
-				} catch (IllegalArgumentException e) {}
+							 					 rectLowerX, rectLowerY));
+				}
+				else if (rectLowerX < rectUpperX && rectLowerY < rectUpperY) {
+					if (rectLowerX < 0) rectLowerX = 0;
+					if (rectLowerY < 0) rectLowerY = 0;
+					rectangles.add(new Rectangle(rectLowerX, rectLowerY,
+		 					 				     rectUpperX, rectUpperY));
+				}
+				else if (rectLowerX < rectUpperX && rectLowerY > rectUpperY) {
+					if (rectLowerX < 0) rectLowerX = 0;
+					if (rectLowerY > height - 1) rectLowerY = height - 1;
+					rectangles.add(new Rectangle(rectLowerX, rectUpperY,
+							 					 rectUpperX, rectLowerY));
+				}
+				else if (rectLowerX > rectUpperX && rectLowerY < rectUpperY) {
+					if (rectLowerX > width - 1) rectLowerX = width - 1;
+					if (rectLowerY < 0) rectLowerY = 0;
+					rectangles.add(new Rectangle(rectUpperX, rectLowerY,
+		 					 				     rectLowerX, rectUpperY));
+				}
 				break;
 				
 			case WAITINGPOINTS:
