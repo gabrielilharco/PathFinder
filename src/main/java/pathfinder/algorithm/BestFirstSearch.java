@@ -4,5 +4,6 @@ import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
 public interface BestFirstSearch<E> extends IAlgorithm<E> {
-	public Path<E> run (IGraph<E> graph, E origin, E destination, Heuristic<E> h);
+	public void setHeuristic(Heuristic<E> h);
+	public Path<E> run (IGraph<E> graph, E origin, E destination);
 }

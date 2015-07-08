@@ -5,7 +5,7 @@ package pathfinder;
 
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
-import pathfinder.algorithm.DepthFirstSearch;
+import pathfinder.algorithm.RecursiveDepthFirstSearch;
 
 /**
  * @author muzio
@@ -18,8 +18,8 @@ public class DepthFirstSearchTest
 	public Path<String> findPathBetween(IGraph<String> g, 
 		 					String ori,
 		 					String dest) {
-		DepthFirstSearch<String> dfs =
-				new DepthFirstSearch<String>();
+		RecursiveDepthFirstSearch<String> dfs =
+				new RecursiveDepthFirstSearch<String>();
 		
 		return dfs.run(g, ori, dest);
 	}

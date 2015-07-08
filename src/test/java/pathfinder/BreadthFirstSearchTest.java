@@ -4,7 +4,7 @@
 package pathfinder;
 
 
-import pathfinder.algorithm.BreadthFirstSearch;
+import pathfinder.algorithm.DepthFirstSearch;
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
@@ -19,8 +19,8 @@ public class BreadthFirstSearchTest
 	public Path<String> findPathBetween(IGraph<String> g, 
 		 					String ori,
 		 					String dest) {
-		BreadthFirstSearch<String> dfs =
-				new BreadthFirstSearch<String>();
+		DepthFirstSearch<String> dfs =
+				new DepthFirstSearch<String>();
 		
 		return dfs.run(g, ori, dest);
 	}

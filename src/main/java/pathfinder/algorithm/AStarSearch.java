@@ -10,12 +10,14 @@ public class AStarSearch<V>
 	implements BestFirstSearch<V> {
 	Heuristic<V> _h;
 	
-	public Path<V> run (IGraph<V> graph, V origin, V destination, Heuristic<V> h) {
+	public void setHeuristic (Heuristic<V> h) {
 		_h = h;
-		return run(graph,origin,destination);
 	}
 	
 	public Path<V> run (IGraph<V> graph, V origin, V destination) {
+		if (_h == null) {
+			throw new RuntimeException("A heuristic has not been set.");
+		}
 		initialize(graph, origin, destination);
 		
 		//TODO FOR NOWW!!!

@@ -25,7 +25,8 @@ public class AStarSearchTest
 		AStarSearch<String> astar =
 		new AStarSearch<String>();
 		
-		return astar.run(g, ori, dest, _h);
+		astar.setHeuristic(_h);
+		return astar.run(g, ori, dest);
 	}
 	
 	public void testRun1() {
