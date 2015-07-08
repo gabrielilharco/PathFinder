@@ -13,8 +13,8 @@ public class VertexMap {
 		if (width <= 0 || height <= 0) {
 			throw new java.lang.IllegalArgumentException("Dimensions must be positive");
 		}
-		this.height = height;
-		this.width = width;
+		this.height = height - 1;
+		this.width = width - 1;
 		_obstacles = new ArrayList<Rectangle>();
 		for (Rectangle rectangle : obstacles) {
 			addRectangleObstacle(rectangle);

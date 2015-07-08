@@ -154,7 +154,8 @@ public class WaypointDrawer extends PApplet{
 					WaypointAlgorithm algorithm = new WaypointAlgorithm();
 					algorithm.run(dividedMap.getGraph(),start, end);
 					
-					fill(255, 255, 60);
+//					fill(255, 255, 60);
+					fill(150, 150, 150);
 					for (Rectangle rectangle : algorithm.getRectPath()) {
 						rect(rectangle.getUpper().getX(), rectangle.getUpper().getY(),
 							 rectangle.getWidth(), rectangle.getHeight());
