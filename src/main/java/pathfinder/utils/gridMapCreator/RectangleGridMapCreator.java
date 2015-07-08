@@ -28,8 +28,8 @@ public class RectangleGridMapCreator extends AbstractGridMapCreator {
 		}
 		
 		for (Rectangle rect : _rects) {
-			for (int j = rect.getLower().getY(); j <= rect.getUpper().getY(); j++) {
-				for(int i = rect.getLower().getX(); i <= rect.getUpper().getX(); i++) {
+			for (int j = rect.getUpper().getY(); j <= rect.getLower().getY(); j++) {
+				for(int i = rect.getUpper().getX(); i <= rect.getLower().getX(); i++) {
 					map.setPointAsObstacle(new Point(i, j));
 				}
 			}

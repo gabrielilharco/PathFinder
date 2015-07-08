@@ -21,10 +21,10 @@ public class WaypointDrawer extends PApplet{
 	
 	static final byte CREATINGRECTS = 0, WAITINGPOINTS = 1;
 	
-	final int width = 600;
-	final int height = 400;
+	final int width = 1800;
+	final int height = 950;
 	final String prefix = "teste01-";
-	final int ellipseRadius = Math.min(width, height) / 20;
+	final int ellipseRadius = Math.min(width, height) / 40;
 	
 	private byte state;
 	private int iterationNumber;
@@ -41,6 +41,8 @@ public class WaypointDrawer extends PApplet{
 	private Point end;
 	private Rectangle startRect;
 	private Rectangle endRect;
+	
+	private boolean startStatistics = false;
 	
 	public void setup() {
 		size(width, height);
@@ -101,6 +103,7 @@ public class WaypointDrawer extends PApplet{
 	}
 	
 	public void mouseClicked() {
+		
 		switch (state) {
 			
 			case CREATINGRECTS:
@@ -113,9 +116,17 @@ public class WaypointDrawer extends PApplet{
 					fill(0, 150, 0, 180);	
 					ellipse(mouseX, mouseY, ellipseRadius, ellipseRadius);
 				}
-				else {
+				else if (end == null){
 					end = new Point(mouseX, mouseY);
 					
+					//draw end vertex
+					fill(230, 0, 0, 180);				
+					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
+					iterationNumber++;
+				}
+					
+				else if (!startStatistics){	
+					System.out.println("Starting draw phase!");
 					//draw path for waypoint algorithm
 					WaypointAlgorithm algorithm = new WaypointAlgorithm();
 					algorithm.run(dividedMap.getGraph(),start, end);
@@ -131,6 +142,15 @@ public class WaypointDrawer extends PApplet{
 						ellipse(point.getX(), point.getY(), ellipseRadius/3, ellipseRadius/3);
 					}
 					
+					//hacky - draw start and end again
+					fill(0, 150, 0, 180);	
+					ellipse(start.getX(), start.getY(), ellipseRadius, ellipseRadius);
+					fill(230, 0, 0, 180);	
+					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
+					
+					
+					stroke(10, 40, 190);
+					strokeWeight(4);
 					noFill();
 					beginShape();
 					for (Point point : algorithm.getPointPath()) {
@@ -138,6 +158,7 @@ public class WaypointDrawer extends PApplet{
 					}
 					endShape();
 					
+					//////////////////////////////////////////////////
 					//draw path for grid graph a star algorithm
 					GridGraphCreator ggc = new GridGraphCreator();
 					
@@ -157,20 +178,16 @@ public class WaypointDrawer extends PApplet{
 					
 					//draw path
 					Point lastPoint = start;
+					stroke(204, 102, 0);
+					strokeWeight(4);
 					for(Point p: path.getPath()) {
 						line(lastPoint.getX(), lastPoint.getY(), p.getX(), p.getY());
 						lastPoint = p;
 					}
 					
-					//draw start and end vertex
-					fill(0, 150, 0, 180);	
-					ellipse(start.getX(), start.getY(), ellipseRadius, ellipseRadius);
-					fill(230, 0, 0, 180);				
-					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
-					start = null;
-					end = null;
-					iterationNumber++;
-					
+					startStatistics = true;
+				}
+				else {	
 					System.out.println("Starting statistics!");
 					//statistics
 					Benchmark b = new Benchmark();
@@ -184,7 +201,7 @@ public class WaypointDrawer extends PApplet{
 					//create statistics for waypoint algorithm
 					b.generateWaypointMapStatistics(vertexMap, start, end);
 				}
-				break;
+			break;
 		}		
 	}
 	
