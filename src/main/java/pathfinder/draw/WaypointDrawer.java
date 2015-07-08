@@ -13,8 +13,8 @@ public class WaypointDrawer extends PApplet{
 	
 	static final byte CREATINGRECTS = 0, WAITINGPOINTS = 1;
 	
-	final int width = 400;
-	final int height = 300;
+	final int width = 600;
+	final int height = 400;
 	final String prefix = "teste01-";
 	final int ellipseRadius = Math.min(width, height) / 20;
 	

@@ -27,12 +27,16 @@ public class WaypointAlgorithm {
 		_rectEnd = findRespectiveRectangle(end);
 		
 		defineHeuristicOfRects();
-		_rectPath = new AStarSearch<Rectangle>().run(_rectGraph, _rectStart, _rectEnd, _rectHeuristic);
+		AStarSearch<Rectangle> rectSearch = new AStarSearch<Rectangle>();
+		rectSearch.setHeuristic(_rectHeuristic);		
+		_rectPath = rectSearch.run(_rectGraph, _rectStart, _rectEnd);
 		
 		_pointGraph = new RectanglePathToEdgePoints(_rectPath, _start, _end).getGraph();
 		
 		defineHeuristicOfPoints();
-		_pointPath = new AStarSearch<Point>().run(_pointGraph, _start, _end, _pointHeuristic);
+		AStarSearch<Point> pointSearch = new AStarSearch<Point>();
+		pointSearch.setHeuristic(_pointHeuristic);
+		_pointPath = pointSearch.run(_pointGraph, _start, _end);
 		
 	}
 	
