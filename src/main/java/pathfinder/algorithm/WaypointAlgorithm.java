@@ -43,7 +43,9 @@ public class WaypointAlgorithm {
 		
 		Point lastPoint = origin;
 		for (Point p: _pointPath.getPath()) {
-			totalDist += p.distanceTo(lastPoint);
+			int dx = Math.abs(p.getX() - lastPoint.getX());
+			int dy = Math.abs(p.getY() - lastPoint.getY());
+			totalDist += (dx + dy);
 			lastPoint = p;
 		}
 		_pointPath.setTotalWeight(totalDist);
