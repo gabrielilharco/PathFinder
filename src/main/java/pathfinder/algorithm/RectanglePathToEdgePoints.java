@@ -124,6 +124,7 @@ public class RectanglePathToEdgePoints {
 	}
 	
 	private int getNumberOfDivisions(int rectLength) {
+		if (rectLength == 1) return 1;
 		int divisionSize = rectLength / _edgeDivisions;
 		if (divisionSize > _maxDivisionSize) {
 			int newNumberOfEdgeDiv = _edgeDivisions;
@@ -141,6 +142,11 @@ public class RectanglePathToEdgePoints {
 			}
 			while (newNumberOfEdgeDiv > 2 && divisionSize < _minDivisionSize);
 		}
-		return rectLength/divisionSize;
+		if (divisionSize == 0) {
+			return rectLength / 2;
+		}
+		else {
+			return rectLength/divisionSize;
+		}
 	}
 }
