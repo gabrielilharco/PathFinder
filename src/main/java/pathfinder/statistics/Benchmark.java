@@ -54,6 +54,7 @@ public class Benchmark {
 			long finishTime = System.currentTimeMillis();
 			System.out.println(algo.getClass().getName() + " finished with: "
 					+ (finishTime - startTime));
+			System.out.println("Total path length: " +( p.size() - 1));
 			if (p.size() == 0)
 				System.out.println("Path is empty!");
 		}
@@ -67,8 +68,9 @@ public class Benchmark {
 		
 		//run waypoint algorithm
 		long startTime = System.currentTimeMillis();
-		algo.run(g, start, end);
+		Path<Point> path = algo.run(g, start, end);
 		long finishTime = System.currentTimeMillis();
 		System.out.println("Waypoint finished with: " + (finishTime - startTime));
+		System.out.println("Total path length: " + path.getTotalWeight());
 	}
 }

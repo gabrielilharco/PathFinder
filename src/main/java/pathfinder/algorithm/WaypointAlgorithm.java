@@ -39,7 +39,16 @@ public class WaypointAlgorithm {
 		pointSearch.setHeuristic(_pointHeuristic);
 		_pointPath = pointSearch.run(_pointGraph, _origin, _destination);
 		
-		return null;
+		double totalDist = 0.0;
+		
+		Point lastPoint = origin;
+		for (Point p: _pointPath.getPath()) {
+			totalDist += p.distanceTo(lastPoint);
+			lastPoint = p;
+		}
+		_pointPath.setTotalWeight(totalDist);
+		
+		return _pointPath;
 	}
 	
 	
