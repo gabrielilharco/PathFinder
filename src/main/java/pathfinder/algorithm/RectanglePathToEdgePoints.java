@@ -11,7 +11,7 @@ import pathfinder.representations.primitives.Rectangle;
 public class RectanglePathToEdgePoints {
 	
 	private final int _minDivisionSize = 10;
-	private final int _maxDivisionSize = 40;
+	private final int _maxDivisionSize = 25;
 	
 	private Path<Rectangle> _path;
 	private WeightedGraph<Point> _graph;
@@ -70,7 +70,6 @@ public class RectanglePathToEdgePoints {
 			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getLower().getX(),
 										   curr.getUpper().getY() + divisionSize * i);
-				System.out.println(point);
 				points.add(point);
 			}
 		}
@@ -81,7 +80,6 @@ public class RectanglePathToEdgePoints {
 			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getUpper().getX() + divisionSize * i,
 										   curr.getLower().getY());
-				System.out.println(point);
 				points.add(point);				
 			}
 		}
@@ -92,7 +90,6 @@ public class RectanglePathToEdgePoints {
 			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getUpper().getX(),
 										   curr.getUpper().getY() + divisionSize * i);
-				System.out.println(point);
 				points.add(point);
 			}			
 		}
@@ -103,7 +100,6 @@ public class RectanglePathToEdgePoints {
 			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getUpper().getX() + divisionSize * i,
 										   curr.getUpper().getY());
-				System.out.println(point);
 				points.add(point);				
 			}			
 		}

@@ -113,15 +113,16 @@ public class WaypointDrawer extends PApplet{
 				if (start == null) {
 					drawWaypointMap();
 					start = new Point(mouseX, mouseY);
-					fill(0, 150, 0, 160);	
+					fill(0, 150, 0, 160);
 					ellipse(mouseX, mouseY, ellipseRadius, ellipseRadius);
 				}
 				else if (end == null){
 					end = new Point(mouseX, mouseY);
 					
 					//draw end vertex
-					fill(230, 0, 0, 160);				
+					fill(230, 0, 0, 160);
 					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
+					save(prefix + "3start-end.png");
 					iterationNumber++;
 				}
 					
@@ -135,7 +136,9 @@ public class WaypointDrawer extends PApplet{
 					for (Rectangle rectangle : algorithm.getRectPath()) {
 						rect(rectangle.getUpper().getX(), rectangle.getUpper().getY(),
 							 rectangle.getWidth(), rectangle.getHeight());
-					}
+					}					
+
+					save(prefix + "4rectPath.png");
 					
 					fill(0, 0, 0);
 					for (Point point : algorithm.getPointGraph().vertices()) {
@@ -148,6 +151,7 @@ public class WaypointDrawer extends PApplet{
 					fill(230, 0, 0, 160);	
 					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
 					
+					save(prefix + "5pointGraph.png");					
 					
 					stroke(10, 40, 190, 160);
 					strokeWeight(4);
@@ -156,7 +160,9 @@ public class WaypointDrawer extends PApplet{
 					for (Point point : algorithm.getPointPath()) {
 						vertex(point.getX(), point.getY());
 					}
-					endShape();
+					endShape();			
+					
+					save(prefix + "6pointPath.png");					
 					
 					//////////////////////////////////////////////////
 					//draw path for grid graph a star algorithm
@@ -184,6 +190,8 @@ public class WaypointDrawer extends PApplet{
 						line(lastPoint.getX(), lastPoint.getY(), p.getX(), p.getY());
 						lastPoint = p;
 					}
+
+					save(prefix + "7gridPath.png");		
 					
 					startStatistics = true;
 				}
