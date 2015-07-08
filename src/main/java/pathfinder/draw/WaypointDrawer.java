@@ -2,11 +2,19 @@ package pathfinder.draw;
 
 import java.util.ArrayList;
 
+import pathfinder.algorithm.AStarSearch;
+import pathfinder.algorithm.Heuristic;
 import pathfinder.algorithm.MapAreaDivider;
 import pathfinder.algorithm.WaypointAlgorithm;
+import pathfinder.representations.graph.Path;
+import pathfinder.representations.graph.WeightedGraph;
+import pathfinder.representations.maps.GridMap;
 import pathfinder.representations.maps.VertexMap;
 import pathfinder.representations.primitives.Point;
 import pathfinder.representations.primitives.Rectangle;
+import pathfinder.statistics.Benchmark;
+import pathfinder.utils.graphCreator.GridGraphCreator;
+import pathfinder.utils.gridMapCreator.RectangleGridMapCreator;
 import processing.core.*;
 
 public class WaypointDrawer extends PApplet{
@@ -21,7 +29,8 @@ public class WaypointDrawer extends PApplet{
 	private byte state;
 	private int iterationNumber;
 	private ArrayList<Rectangle> rectangles;
-	private VertexMap map;
+	private VertexMap vertexMap;
+	private GridMap gridMap;
 	private MapAreaDivider dividedMap;
 	
 	private int rectUpperX;
@@ -107,8 +116,10 @@ public class WaypointDrawer extends PApplet{
 				else {
 					end = new Point(mouseX, mouseY);
 					
-					WaypointAlgorithm algorithm = new WaypointAlgorithm(dividedMap.getGraph(),
-																			start, end);
+					//draw path for waypoint algorithm
+					WaypointAlgorithm algorithm = new WaypointAlgorithm();
+					algorithm.run(dividedMap.getGraph(),start, end);
+					
 					fill(255, 255, 60);
 					for (Rectangle rectangle : algorithm.getRectPath()) {
 						rect(rectangle.getUpper().getX(), rectangle.getUpper().getY(),
@@ -126,7 +137,32 @@ public class WaypointDrawer extends PApplet{
 						vertex(point.getX(), point.getY());
 					}
 					endShape();
-
+					
+					//draw path for grid graph a star algorithm
+					GridGraphCreator ggc = new GridGraphCreator();
+					
+					//create graph
+					WeightedGraph<Point> g = ggc.createGraph(gridMap);
+					
+					AStarSearch<Point> astar = new AStarSearch<Point>();
+					astar.setHeuristic(new Heuristic<Point>() {
+						@Override
+						public double f(Point curr, Point dest) {
+							int dx = Math.abs(curr.getX() - dest.getX());
+							int dy = Math.abs(curr.getY() - dest.getY());
+							return dx + dy;
+						}
+					});
+					Path<Point> path = astar.run(g, start, end);
+					
+					//draw path
+					Point lastPoint = start;
+					for(Point p: path.getPath()) {
+						line(lastPoint.getX(), lastPoint.getY(), p.getX(), p.getY());
+						lastPoint = p;
+					}
+					
+					//draw start and end vertex
 					fill(0, 150, 0, 180);	
 					ellipse(start.getX(), start.getY(), ellipseRadius, ellipseRadius);
 					fill(230, 0, 0, 180);				
@@ -134,6 +170,19 @@ public class WaypointDrawer extends PApplet{
 					start = null;
 					end = null;
 					iterationNumber++;
+					
+					System.out.println("Starting statistics!");
+					//statistics
+					Benchmark b = new Benchmark();
+					
+					System.out.println(start);
+					System.out.println(end);
+					
+					//create statistics for grid graph algorithms
+					b.generateGridMapStatistics(gridMap, start, end);
+					
+					//create statistics for waypoint algorithm
+					b.generateWaypointMapStatistics(vertexMap, start, end);
 				}
 				break;
 		}		
@@ -145,8 +194,9 @@ public class WaypointDrawer extends PApplet{
 			
 			case CREATINGRECTS:
 				save(prefix + "1obstacles.png");
-				map = new VertexMap(width, height, rectangles);
-				dividedMap = new MapAreaDivider(map);
+				vertexMap = new VertexMap(width, height, rectangles);
+				gridMap = new RectangleGridMapCreator(rectangles, width, height).createMap();
+				dividedMap = new MapAreaDivider(vertexMap);
 				drawWaypointMap();				
 				save(prefix + "2waypointMap.png");
 				state = WAITINGPOINTS;	

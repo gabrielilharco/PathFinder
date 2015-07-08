@@ -22,8 +22,8 @@ public class Main {
 	public static void main(String[] args)  {
 	
 		
-		Benchmark b = new Benchmark();
-		b.generateGridMapStatistics();
+//		Benchmark b = new Benchmark();
+//		b.generateGridMapStatistics();
 		
 //		try {
 //			new MainJFrame();

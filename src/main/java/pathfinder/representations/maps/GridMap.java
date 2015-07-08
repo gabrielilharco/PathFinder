@@ -19,6 +19,10 @@ public class GridMap {
 		isObstacle[p.getX()][p.getY()] = true;
 	}
 	
+	public void setPointAsNotObstacle (Point p) {
+		isObstacle[p.getX()][p.getY()] = false;
+	}
+	
 	// expects the coordinates of the left lower (1) and right upper (2) corners
 	public void setRectangleObstacle (Point p1, Point p2){
 		for (int i = p1.getX(); i < p2.getX(); i++)

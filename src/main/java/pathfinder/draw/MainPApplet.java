@@ -67,9 +67,7 @@ public class MainPApplet extends PApplet{
 				}
 				
 				// draw path
-				
-				
-				
+			
 				Iterator<Point> iterator = path.iterator();
 				Point lastPoint = iterator.next();
 				drawX(lastPoint,10);

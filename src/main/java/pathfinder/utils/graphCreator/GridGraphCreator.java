@@ -31,14 +31,12 @@ public class GridGraphCreator extends AbstractGraphCreator{
 //					System.out.println("Adding horiz " + i + " " + j);
 					G.addEdge(current, horiNeighbor);
 					G.setEdgeWeight(current, horiNeighbor, 1.0);
-					//G.addEdge(new Node (i-1,j), new Node (i,j), 1);
 				}
 				if (j > 0 && !map.isObstacle[i][j-1]) {
 //					System.out.println("Adding vert " + i + " " + j);
 					Point vertNeighbor = new Point(i, j - 1);
 					G.addEdge(current, vertNeighbor);
 					G.setEdgeWeight(current, vertNeighbor, 1.0);
-					//G.addEdge(new Node (i,j-1), new Node (i,j), 1);
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 package pathfinder.algorithm;
 
+import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 import pathfinder.representations.graph.WeightedGraph;
 import pathfinder.representations.primitives.Point;
@@ -11,34 +12,36 @@ public class WaypointAlgorithm {
 	private WeightedGraph<Point> _pointGraph;
 	private Path<Rectangle> _rectPath;
 	private Path<Point> _pointPath;
-	private Point _start;
-	private Point _end;
+	private Point _origin;
+	private Point _destination;
 	private Rectangle _rectStart;
 	private Rectangle _rectEnd;
 	private Heuristic<Rectangle> _rectHeuristic;
 	private Heuristic<Point> _pointHeuristic;
 	
-	public WaypointAlgorithm(WeightedGraph<Rectangle> graph, Point start, Point end) {
-		_rectGraph = graph;
-		_start = start;
-		_end = end;
+	public Path<Point> run(IGraph<Rectangle> graph, Point origin, Point destination) {
+		_rectGraph = (WeightedGraph<Rectangle>) graph;
+		_origin = origin;
+		_destination = destination;
 		
-		_rectStart = findRespectiveRectangle(start);
-		_rectEnd = findRespectiveRectangle(end);
+		_rectStart = findRespectiveRectangle(origin);
+		_rectEnd = findRespectiveRectangle(destination);
 		
 		defineHeuristicOfRects();
 		AStarSearch<Rectangle> rectSearch = new AStarSearch<Rectangle>();
 		rectSearch.setHeuristic(_rectHeuristic);		
 		_rectPath = rectSearch.run(_rectGraph, _rectStart, _rectEnd);
 		
-		_pointGraph = new RectanglePathToEdgePoints(_rectPath, _start, _end).getGraph();
+		_pointGraph = new RectanglePathToEdgePoints(_rectPath, _origin, _destination).getGraph();
 		
 		defineHeuristicOfPoints();
 		AStarSearch<Point> pointSearch = new AStarSearch<Point>();
 		pointSearch.setHeuristic(_pointHeuristic);
-		_pointPath = pointSearch.run(_pointGraph, _start, _end);
+		_pointPath = pointSearch.run(_pointGraph, _origin, _destination);
 		
+		return null;
 	}
+	
 	
 	public Path<Rectangle> getRectPath() {
 		return _rectPath;
