@@ -10,6 +10,9 @@ import pathfinder.representations.primitives.Rectangle;
 
 public class RectanglePathToEdgePoints {
 	
+	private final int _minDivisionSize = 10;
+	private final int _maxDivisionSize = 40;
+	
 	private Path<Rectangle> _path;
 	private WeightedGraph<Point> _graph;
 	private Point _start;
@@ -62,37 +65,45 @@ public class RectanglePathToEdgePoints {
 		ArrayList<Point> points = new ArrayList<Point>();
 		// Next rectangle is on the right
 		if (curr.getLower().getX() == next.getUpper().getX()) {
-			for (int i = 1; i < _edgeDivisions; i++) {
-				int divisionSize = curr.getHeight() / _edgeDivisions;
+			int numberOfDivisions = getNumberOfDivisions(curr.getHeight());		
+			int divisionSize = curr.getHeight()/numberOfDivisions;
+			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getLower().getX(),
 										   curr.getUpper().getY() + divisionSize * i);
+				System.out.println(point);
 				points.add(point);
 			}
 		}
 		// Next rectangle is on the bottom
 		else if (curr.getLower().getY() == next.getUpper().getY()) {
-			for (int i = 1; i < _edgeDivisions; i++) {
-				int divisionSize = curr.getWidth() / _edgeDivisions;
+			int numberOfDivisions = getNumberOfDivisions(curr.getWidth());
+			int divisionSize = curr.getWidth()/numberOfDivisions;
+			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getUpper().getX() + divisionSize * i,
 										   curr.getLower().getY());
+				System.out.println(point);
 				points.add(point);				
 			}
 		}
 		// Next rectangle is on the left
 		else if (curr.getUpper().getX() == next.getLower().getX()) {
-			for (int i = 1; i < _edgeDivisions; i++) {
-				int divisionSize = curr.getHeight() / _edgeDivisions;
+			int numberOfDivisions = getNumberOfDivisions(curr.getHeight());		
+			int divisionSize = curr.getHeight()/numberOfDivisions;
+			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getUpper().getX(),
 										   curr.getUpper().getY() + divisionSize * i);
+				System.out.println(point);
 				points.add(point);
 			}			
 		}
 		// Next rectangle is on the top
 		else if (curr.getUpper().getY() == next.getLower().getY()) {
-			for (int i = 1; i < _edgeDivisions; i++) {
-				int divisionSize = curr.getWidth() / _edgeDivisions;
+			int numberOfDivisions = getNumberOfDivisions(curr.getWidth());		
+			int divisionSize = curr.getWidth()/numberOfDivisions;
+			for (int i = 1; i < numberOfDivisions; i++) {
 				Point point  = new Point(curr.getUpper().getX() + divisionSize * i,
 										   curr.getUpper().getY());
+				System.out.println(point);
 				points.add(point);				
 			}			
 		}
@@ -103,8 +114,7 @@ public class RectanglePathToEdgePoints {
 			ArrayList<Point> points) {
 		for (Point point : points) {
 			graph.addVertex(point);
-		}
-		
+		}		
 	}
 	
 	private void addEdgesToGraph(WeightedGraph<Point> graph,
@@ -114,7 +124,27 @@ public class RectanglePathToEdgePoints {
 				graph.addEdge(last, curr);
 				graph.setEdgeWeight(last, curr, curr.distanceTo(last));
 			}
+		}		
+	}
+	
+	private int getNumberOfDivisions(int rectLength) {
+		int divisionSize = rectLength / _edgeDivisions;
+		if (divisionSize > _maxDivisionSize) {
+			int newNumberOfEdgeDiv = _edgeDivisions;
+			do {
+				newNumberOfEdgeDiv++;
+				divisionSize = rectLength / newNumberOfEdgeDiv;
+			}
+			while (divisionSize > _maxDivisionSize);
 		}
-		
+		else if (divisionSize < _minDivisionSize) {
+			int newNumberOfEdgeDiv = _edgeDivisions;
+			do {
+				newNumberOfEdgeDiv--;
+				divisionSize = rectLength / newNumberOfEdgeDiv;
+			}
+			while (newNumberOfEdgeDiv > 2 && divisionSize < _minDivisionSize);
+		}
+		return rectLength/divisionSize;
 	}
 }

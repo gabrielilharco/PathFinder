@@ -113,14 +113,14 @@ public class WaypointDrawer extends PApplet{
 				if (start == null) {
 					drawWaypointMap();
 					start = new Point(mouseX, mouseY);
-					fill(0, 150, 0, 180);	
+					fill(0, 150, 0, 160);	
 					ellipse(mouseX, mouseY, ellipseRadius, ellipseRadius);
 				}
 				else if (end == null){
 					end = new Point(mouseX, mouseY);
 					
 					//draw end vertex
-					fill(230, 0, 0, 180);				
+					fill(230, 0, 0, 160);				
 					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
 					iterationNumber++;
 				}
@@ -137,19 +137,19 @@ public class WaypointDrawer extends PApplet{
 							 rectangle.getWidth(), rectangle.getHeight());
 					}
 					
-					fill(40, 40, 255, 180);
+					fill(0, 0, 0);
 					for (Point point : algorithm.getPointGraph().vertices()) {
 						ellipse(point.getX(), point.getY(), ellipseRadius/3, ellipseRadius/3);
 					}
 					
 					//hacky - draw start and end again
-					fill(0, 150, 0, 180);	
+					fill(0, 150, 0, 160);	
 					ellipse(start.getX(), start.getY(), ellipseRadius, ellipseRadius);
-					fill(230, 0, 0, 180);	
+					fill(230, 0, 0, 160);	
 					ellipse(end.getX(), end.getY(), ellipseRadius, ellipseRadius);
 					
 					
-					stroke(10, 40, 190);
+					stroke(10, 40, 190, 160);
 					strokeWeight(4);
 					noFill();
 					beginShape();
@@ -178,7 +178,7 @@ public class WaypointDrawer extends PApplet{
 					
 					//draw path
 					Point lastPoint = start;
-					stroke(204, 102, 0);
+					stroke(200, 100, 0, 60);
 					strokeWeight(4);
 					for(Point p: path.getPath()) {
 						line(lastPoint.getX(), lastPoint.getY(), p.getX(), p.getY());
