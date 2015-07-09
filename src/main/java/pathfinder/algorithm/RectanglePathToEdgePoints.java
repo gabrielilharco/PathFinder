@@ -19,6 +19,7 @@ public class RectanglePathToEdgePoints {
 	private Point _end;
 	private final int _edgeDivisions = 5;
 
+	// get a group of points lying on the path edges
 	public RectanglePathToEdgePoints(Path<Rectangle> path,
 										 Point start, Point end) {
 		if (path.size() == 0) {
@@ -35,6 +36,7 @@ public class RectanglePathToEdgePoints {
 		return _graph;
 	}
 	
+	// main function
 	private void generateGraph() {
 		_graph.addVertex(_start);
 		_graph.addVertex(_end);
@@ -61,6 +63,7 @@ public class RectanglePathToEdgePoints {
 		}
 	}
 
+	// gets each point of an edge
 	private ArrayList<Point> getEdgePoints(Rectangle curr, Rectangle next) {
 		ArrayList<Point> points = new ArrayList<Point>();
 		// Next rectangle is on the right
@@ -123,6 +126,7 @@ public class RectanglePathToEdgePoints {
 		}		
 	}
 	
+	// decides how many points an edge is going to have
 	private int getNumberOfDivisions(int rectLength) {
 		if (rectLength == 1) return 1;
 		int divisionSize = rectLength / _edgeDivisions;

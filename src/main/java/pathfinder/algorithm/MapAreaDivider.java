@@ -19,6 +19,7 @@ public class MapAreaDivider {
 	private TreeMap<Integer, List<LineInfo>> _verticalLines;
 	private TreeMap<Integer, List<LineInfo>> _horizontalLines;
 	
+	// divides a map on a graph of rectangles
 	public MapAreaDivider(VertexMap map) {
 		_map = map;
 		_verticalLines = new TreeMap<Integer, List<LineInfo>>();
@@ -46,6 +47,7 @@ public class MapAreaDivider {
 		addToMultiMap(_horizontalLines, _map.height, horizontalPair);	
 	}
 
+	// generates a line for each edge going from the begin to the end of the map
 	private void createLinesFromObstacles() {
 		int upperX, upperY, lowerX, lowerY;
 		for (Rectangle rectangle : _map.obstacleList()) {
@@ -62,8 +64,9 @@ public class MapAreaDivider {
 		}
 	}
 	
+	// removes line segments that are intersecting rectangles (not used later)
 	private void removeSegmentsIntersectingObstacles() {
-		int upperX, upperY, lowerX, lowerY, ceilingX, ceilingY;
+		int upperX, upperY, lowerX, lowerY;
 		Map<Integer, List<LineInfo>> intersectingVertical;
 		Map<Integer, List<LineInfo>> intersectingHorizontal;
 		for (Rectangle rectangle : _map.obstacleList()) {
@@ -136,9 +139,6 @@ public class MapAreaDivider {
 			prevVertLine = vert;
 			i++;
 		}		
-//		for (Rectangle r : graph.adj(rectMap[2][3])) {
-//			System.out.println(r);
-//		}
 		return graph;
 	}
 	
@@ -154,18 +154,15 @@ public class MapAreaDivider {
 		map.get(key).add(value);
 	}
 	
+	// effectively remove a piece of each segments depending on the overlapping obstacles
 	private void removeSegments(
 			Map<Integer, List<LineInfo>> intersecting,
 			int upper, int lower) {
-//		System.out.println("\nup=" + upper + " lw= " + lower);
 		for (Entry<Integer, List<LineInfo>> entry : intersecting.entrySet()) {
-//			System.out.println("key=" + entry.getKey());
 			for (LineInfo lineInfo : entry.getValue()) {
-//				System.out.println("\nstart=" + lineInfo.getStart() + " end= " + lineInfo.getEnd());
 				if (lineInfo.getEnd() <= upper) {
 					// Line ends before the rectangle
 					// Do nothing
-//					System.out.println("1");
 				}
 				else if (lineInfo.getEnd() < lower) {
 					if (lineInfo.getStart() <= upper) {
@@ -173,21 +170,18 @@ public class MapAreaDivider {
 						if (lineInfo.sourceStart >= upper) {
 							// The source rectangle is inside this one
 							// Delete it
-//							System.out.println("2");
 							entry.getValue().remove(lineInfo);
 						}
 						else {
 							// Source rectangle is either outside or 
 							// intersecting with this one
 							// Cut line
-//							System.out.println("3");
 							lineInfo.setEnd(upper);
 						}
 					}
 					else {
 						// Line is totally inside rectangle
 						// Delete it
-//						System.out.println("4");
 						entry.getValue().remove(lineInfo);
 					}
 				}
@@ -198,20 +192,17 @@ public class MapAreaDivider {
 							// Source rectangle is either outside or 
 							// intersecting with this one
 							// Cut line
-//							System.out.println("5");
 							lineInfo.setEnd(upper);
 						}
 						else if (lineInfo.sourceEnd < lower) {
 							// Source rectangle is totally inside rectangle
 							// Delete it
-//							System.out.println("6");
 							entry.getValue().remove(lineInfo);
 						}
 						else {
 							// Source rectangle is either outside or 
 							// intersecting with this one
 							// Cut line
-//							System.out.println("7");
 							lineInfo.setStart(lower);
 						}
 					}
@@ -220,19 +211,16 @@ public class MapAreaDivider {
 						if (lineInfo.sourceEnd <= lower) {
 							// The source rectangle is inside this one
 							// Delete it
-//							System.out.println("8");
 							entry.getValue().remove(lineInfo);
 						}
 						else {
 							// The source rectangle is either outside or 
 							// intersecting with this one
 							// Cut line
-//							System.out.println("9");
 							lineInfo.setStart(lower);
 						}
 					}
 					else {
-//						System.out.println("10");
 						// Line starts after the rectangle
 						// Do nothing
 					}

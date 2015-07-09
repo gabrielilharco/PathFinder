@@ -20,7 +20,7 @@ public class NavigationMeshAlgorithm {
 	private Heuristic<Rectangle> _rectHeuristic;
 	private Heuristic<Point> _pointHeuristic;
 	
-	//run algorithm
+	// run algorithm
 	public Path<Point> run(IGraph<Rectangle> graph, Point origin, Point destination) {
 		_rectGraph = (WeightedGraph<Rectangle>) graph;
 		_origin = origin;
@@ -29,24 +29,28 @@ public class NavigationMeshAlgorithm {
 		_rectStart = findRespectiveRectangle(origin);
 		_rectEnd = findRespectiveRectangle(destination);
 		
-		//manhattan distance
+		// manhattan distance
 		defineHeuristicOfRects();
 		
+		// find best path on graph of rectangles
 		AStarSearch<Rectangle> rectSearch = new AStarSearch<Rectangle>();
 		rectSearch.setHeuristic(_rectHeuristic);		
 		_rectPath = rectSearch.run(_rectGraph, _rectStart, _rectEnd);
 		
+		// get graph on points lying on top of the path edges
 		_pointGraph = new RectanglePathToEdgePoints(_rectPath, _origin, _destination).getGraph();
 		
+		// manhattan distance
 		defineHeuristicOfPoints();
+		
+		//get best path of points		
 		AStarSearch<Point> pointSearch = new AStarSearch<Point>();
 		pointSearch.setHeuristic(_pointHeuristic);
-		
-		//get path
 		_pointPath = pointSearch.run(_pointGraph, _origin, _destination);
 		
 		double totalDist = 0.0;
 		
+		// statistics
 		Point lastPoint = origin;
 		for (Point p: _pointPath.getPath()) {
 			int dx = Math.abs(p.getX() - lastPoint.getX());
@@ -81,7 +85,7 @@ public class NavigationMeshAlgorithm {
 		throw new IllegalStateException("Didn't find rectangle containing given point"); 
 	}
 	
-	//manhattan distance heuristic
+	// manhattan distance heuristic
 	private void defineHeuristicOfRects() {
 		_rectHeuristic = new Heuristic<Rectangle>() {
 			@Override
@@ -93,7 +97,7 @@ public class NavigationMeshAlgorithm {
 		};
 	}
 	
-	//manhattan distance heuristic
+	// manhattan distance heuristic
 	private void defineHeuristicOfPoints() {
 		_pointHeuristic = new Heuristic<Point>() {
 			@Override

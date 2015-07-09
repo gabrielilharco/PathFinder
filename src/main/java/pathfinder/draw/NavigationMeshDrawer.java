@@ -56,10 +56,10 @@ public class NavigationMeshDrawer extends PApplet{
 	}
 	
 	public void draw() {
-//		System.out.println(mouseX);
 		
 		switch (state) {
-		
+			
+			// draw every rectangle
 			case CREATINGRECTS:
 				background(255);
 				fill(0);
@@ -90,6 +90,7 @@ public class NavigationMeshDrawer extends PApplet{
 	public void mouseReleased() {
 		switch (state) {
 			
+		// draw rectangle
 			case CREATINGRECTS:
 				rectLowerX = mouseX;
 				rectLowerY = mouseY;
@@ -132,12 +133,14 @@ public class NavigationMeshDrawer extends PApplet{
 				break;
 				
 			case WAITINGPOINTS:
+				// draw start point
 				if (start == null) {
 					drawWaypointMap();
 					start = new Point(mouseX, mouseY);
 					fill(0, 150, 0, 160);
 					ellipse(mouseX, mouseY, ellipseRadius, ellipseRadius);
 				}
+				// draw end point
 				else if (end == null){
 					end = new Point(mouseX, mouseY);
 					
@@ -147,7 +150,7 @@ public class NavigationMeshDrawer extends PApplet{
 					save(prefix + "3start-end.png");
 					iterationNumber++;
 				}
-					
+				// start drawing
 				else if (!startStatistics){	
 					System.out.println("Starting draw phase!");
 					//draw path for waypoint algorithm
@@ -219,6 +222,7 @@ public class NavigationMeshDrawer extends PApplet{
 					
 					startStatistics = true;
 				}
+				// start statistics
 				else {	
 					System.out.println("Starting statistics!");
 					//statistics
@@ -240,7 +244,7 @@ public class NavigationMeshDrawer extends PApplet{
 	
 	public void keyPressed() {
 		switch (state) {
-			
+			// divides map
 			case CREATINGRECTS:
 				save(prefix + "1obstacles.png");
 				vertexMap = new VertexMap(width, height, rectangles);
