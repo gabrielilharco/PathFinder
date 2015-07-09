@@ -6,7 +6,8 @@ import pathfinder.representations.graph.WeightedGraph;
 import pathfinder.representations.primitives.Point;
 import pathfinder.representations.primitives.Rectangle;
 
-public class WaypointAlgorithm {
+//Navigation Mesh Algorithm implementation
+public class NavigationMeshAlgorithm {
 	
 	private WeightedGraph<Rectangle> _rectGraph;
 	private WeightedGraph<Point> _pointGraph;
@@ -19,6 +20,7 @@ public class WaypointAlgorithm {
 	private Heuristic<Rectangle> _rectHeuristic;
 	private Heuristic<Point> _pointHeuristic;
 	
+	//run algorithm
 	public Path<Point> run(IGraph<Rectangle> graph, Point origin, Point destination) {
 		_rectGraph = (WeightedGraph<Rectangle>) graph;
 		_origin = origin;
@@ -27,7 +29,9 @@ public class WaypointAlgorithm {
 		_rectStart = findRespectiveRectangle(origin);
 		_rectEnd = findRespectiveRectangle(destination);
 		
+		//manhattan distance
 		defineHeuristicOfRects();
+		
 		AStarSearch<Rectangle> rectSearch = new AStarSearch<Rectangle>();
 		rectSearch.setHeuristic(_rectHeuristic);		
 		_rectPath = rectSearch.run(_rectGraph, _rectStart, _rectEnd);
@@ -37,6 +41,8 @@ public class WaypointAlgorithm {
 		defineHeuristicOfPoints();
 		AStarSearch<Point> pointSearch = new AStarSearch<Point>();
 		pointSearch.setHeuristic(_pointHeuristic);
+		
+		//get path
 		_pointPath = pointSearch.run(_pointGraph, _origin, _destination);
 		
 		double totalDist = 0.0;
@@ -75,20 +81,26 @@ public class WaypointAlgorithm {
 		throw new IllegalStateException("Didn't find rectangle containing given point"); 
 	}
 	
+	//manhattan distance heuristic
 	private void defineHeuristicOfRects() {
 		_rectHeuristic = new Heuristic<Rectangle>() {
 			@Override
 			public double f(Rectangle curr, Rectangle dest) {
-				return curr.getCenter().distanceTo(dest.getCenter());
+				int dx = Math.abs(curr.getCenter().getX() - dest.getCenter().getX());
+				int dy = Math.abs(curr.getCenter().getY() - dest.getCenter().getY());
+				return dx + dy;
 			}
 		};
 	}
 	
+	//manhattan distance heuristic
 	private void defineHeuristicOfPoints() {
 		_pointHeuristic = new Heuristic<Point>() {
 			@Override
 			public double f(Point curr, Point dest) {
-				return curr.distanceTo(dest);
+				int dx = Math.abs(curr.getX() - dest.getX());
+				int dy = Math.abs(curr.getY() - dest.getY());
+				return dx + dy;
 			}
 		};
 	}

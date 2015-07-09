@@ -10,10 +10,9 @@ import javax.swing.SwingUtilities;
 
 import pathfinder.graphicInterface.ChooseAlgorithmJPanel;
 
-public class ChooseAlgorithmButtonListener implements ActionListener{
+public class ChooseAlgorithmButtonListener implements ActionListener {
 
-    public void actionPerformed(ActionEvent e)
-    {
+    public void actionPerformed(ActionEvent e) {
 
       JPanel p = new ChooseAlgorithmJPanel();
       JFrame f = (JFrame) SwingUtilities.getRoot((Component) e.getSource());

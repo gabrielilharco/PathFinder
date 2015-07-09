@@ -1,6 +1,6 @@
 package pathfinder.utils;
 
-
+//two-element tuple util class
 public class Pair<A extends Comparable<A>, B >
 	implements Comparable<Pair<A, B>> {
     private final A first;

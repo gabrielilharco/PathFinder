@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+//Path implementation for storing algorithm results
 public class Path<E> implements Iterable<E>{
 	private ArrayList<E> _elements;
 	private double _totalWeight;
@@ -36,8 +37,6 @@ public class Path<E> implements Iterable<E>{
 	public void setTotalWeight(double pathWeight) {
 		_totalWeight = pathWeight;
 	}
-
-	
 	
 	@Override
 	public String toString() {

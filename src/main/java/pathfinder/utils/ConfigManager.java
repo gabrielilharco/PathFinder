@@ -9,6 +9,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 
+//utility for getting resources from  xml file
 public class ConfigManager {
 	private static final ConfigManager configManager = new ConfigManager();
 	

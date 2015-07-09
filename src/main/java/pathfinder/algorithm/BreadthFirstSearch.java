@@ -6,6 +6,7 @@ import java.util.Queue;
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
+//Straight-forward BFS implementation using a queue
 public class BreadthFirstSearch<E> extends AbstractPathFinder<E> {
 	final private Queue<E> _q;
 	
@@ -24,6 +25,7 @@ public class BreadthFirstSearch<E> extends AbstractPathFinder<E> {
 		while(!_q.isEmpty()) {
 			E current = _q.remove();
 			
+			//terminates if destination is found
 			if (current.equals(destination)) {
 				_foundDestination = true;
 				break;
@@ -39,6 +41,7 @@ public class BreadthFirstSearch<E> extends AbstractPathFinder<E> {
 			}
 		}
 		
+		//if the destination has been found, generate the path
 		if (_foundDestination) {
 			generatePath();
 		}

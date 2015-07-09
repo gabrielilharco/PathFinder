@@ -44,6 +44,7 @@ public class WeightedGraph<V>
 		return _weightMap.get(edge);
 	}
 	
+	//checks if an edge is inside the graph
 	private void validateEdge(Edge<V> edge) {
 		if (!_weightMap.containsKey(edge)) {
 			throw new NoSuchElementException("This Edge is not in the graph");

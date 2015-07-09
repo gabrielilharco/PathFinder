@@ -3,6 +3,7 @@ package pathfinder.representations.graph;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+//adjacency list used by graph to store each vertex's neighbor
 public class AdjacencyList<E> implements Iterable<E> {
 	private int _size;
 	private ListNode<E> _first;

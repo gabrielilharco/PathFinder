@@ -6,6 +6,7 @@ import java.util.Stack;
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
+//Straight-forward iterative DFS implementation using a stack
 public class DepthFirstSearch<E> extends AbstractPathFinder<E> {
 	final private Stack<E> _s;
 	
@@ -38,6 +39,7 @@ public class DepthFirstSearch<E> extends AbstractPathFinder<E> {
 			}
 		}
 		
+		//if the destination has been found, generate the path
 		if (_foundDestination) {
 			generatePath();
 		}

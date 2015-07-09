@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import pathfinder.algorithm.AStarSearch;
 import pathfinder.algorithm.Heuristic;
 import pathfinder.algorithm.MapAreaDivider;
-import pathfinder.algorithm.WaypointAlgorithm;
+import pathfinder.algorithm.NavigationMeshAlgorithm;
 import pathfinder.representations.graph.Path;
 import pathfinder.representations.graph.WeightedGraph;
 import pathfinder.representations.maps.GridMap;
@@ -17,12 +17,12 @@ import pathfinder.utils.graphCreator.GridGraphCreator;
 import pathfinder.utils.gridMapCreator.RectangleGridMapCreator;
 import processing.core.*;
 
-public class WaypointDrawer extends PApplet{
+public class NavigationMeshDrawer extends PApplet{
 	
 	static final byte CREATINGRECTS = 0, WAITINGPOINTS = 1;
 	
-	final int width = 300;
-	final int height = 200;
+	final int width = 1900;
+	final int height = 1000;
 	final String prefix = "teste01-";
 	final int ellipseRadius = Math.min(width, height) / 20;
 	
@@ -151,7 +151,7 @@ public class WaypointDrawer extends PApplet{
 				else if (!startStatistics){	
 					System.out.println("Starting draw phase!");
 					//draw path for waypoint algorithm
-					WaypointAlgorithm algorithm = new WaypointAlgorithm();
+					NavigationMeshAlgorithm algorithm = new NavigationMeshAlgorithm();
 					algorithm.run(dividedMap.getGraph(),start, end);
 					
 //					fill(255, 255, 60);
@@ -209,6 +209,7 @@ public class WaypointDrawer extends PApplet{
 					Point lastPoint = start;
 					stroke(200, 100, 0, 60);
 					strokeWeight(4);
+					System.out.println(path.getPath().size());
 					for(Point p: path.getPath()) {
 						line(lastPoint.getX(), lastPoint.getY(), p.getX(), p.getY());
 						lastPoint = p;
@@ -230,7 +231,7 @@ public class WaypointDrawer extends PApplet{
 					b.generateGridMapStatistics(gridMap, start, end);
 					
 					//create statistics for waypoint algorithm
-					b.generateWaypointMapStatistics(vertexMap, start, end);
+					b.generateNavMeshMapStatistics(vertexMap, start, end);
 				}
 			break;
 		}		

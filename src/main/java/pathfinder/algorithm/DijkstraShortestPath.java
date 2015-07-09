@@ -3,6 +3,8 @@ package pathfinder.algorithm;
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
+//Dijkstra shortest path implementation using the AStar
+//with heuristic equal to zero.
 public class DijkstraShortestPath<V>
 	extends AbstractShortestPathFinder<V> {
 	

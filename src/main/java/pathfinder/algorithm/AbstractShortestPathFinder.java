@@ -7,6 +7,7 @@ import java.util.Queue;
 import pathfinder.representations.graph.WeightedGraph;
 import pathfinder.utils.Pair;
 
+//Abstract class for all shortest path graph algorithms
 abstract public class AbstractShortestPathFinder<V>
 	extends AbstractPathFinder<V>{
 	
@@ -27,6 +28,7 @@ abstract public class AbstractShortestPathFinder<V>
 		_dist.put(v, dist);
 	}
 	
+	//returns the distance from vertex v to origin
 	protected double getVertexDistance(V v) {
 		if (!_dist.containsKey(v)) {
 			return Double.POSITIVE_INFINITY;

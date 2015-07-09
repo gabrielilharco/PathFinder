@@ -3,6 +3,7 @@ package pathfinder.algorithm;
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
+//Straight-forward DFS recursive implementation
 public class RecursiveDepthFirstSearch<E> 
 	extends AbstractPathFinder<E> {
 
@@ -26,7 +27,6 @@ public class RecursiveDepthFirstSearch<E>
 	private void runRecursiveSearch(E current) {
 		markVertexAsVisited(current);
 
-		// TODO - equals
 		if (current.equals(_destination)) {
 			_foundDestination = true;
 			return;
@@ -36,6 +36,7 @@ public class RecursiveDepthFirstSearch<E>
 		for (E neigh : _graph.adj(current)) {
 			if (!vertexIsVisited(neigh)) {
 				markVertexParent(neigh, current);
+				//recursively visit each neighbor
 				runRecursiveSearch(neigh);
 			}
 		}

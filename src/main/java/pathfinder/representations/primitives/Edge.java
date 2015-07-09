@@ -1,5 +1,6 @@
 package pathfinder.representations.primitives;
 
+//Edge representation
 public class Edge<V> {
 	private V _v1;
 	private V _v2;
@@ -17,7 +18,7 @@ public class Edge<V> {
 		return _v2;
 	}
 	
-	@Override
+	//method that compares 2 edges
 	public boolean equals(Object obj) {
 		if (obj == null)
 	         return false;

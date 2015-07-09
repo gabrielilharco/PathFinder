@@ -6,8 +6,9 @@ import java.util.Stack;
 import pathfinder.representations.graph.IGraph;
 import pathfinder.representations.graph.Path;
 
+//Abstract class for all path finding algorithms 
 abstract public class AbstractPathFinder<V>
-	implements IAlgorithm<V> {
+	implements IGraphAlgorithm<V> {
 	// algorithm data structures
 	final protected HashMap<V, V> _parents;
 	final protected HashMap<V, Boolean> _visited;
@@ -29,7 +30,7 @@ abstract public class AbstractPathFinder<V>
 	}
 	
 	abstract public Path<V> run(IGraph<V> graph, V origin, V destination);
-		
+	
 	protected void initialize(IGraph<V> graph, V origin, V destination) {
 		graph.validateVertex(origin);
 		graph.validateVertex(destination);

@@ -4,13 +4,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import pathfinder.algorithm.BreadthFirstSearch;
-import pathfinder.algorithm.IAlgorithm;
+import pathfinder.algorithm.IGraphAlgorithm;
 import pathfinder.algorithm.AStarSearch;
 import pathfinder.algorithm.DepthFirstSearch;
 import pathfinder.algorithm.DijkstraShortestPath;
 import pathfinder.algorithm.Heuristic;
 import pathfinder.algorithm.MapAreaDivider;
-import pathfinder.algorithm.WaypointAlgorithm;
+import pathfinder.algorithm.NavigationMeshAlgorithm;
 import pathfinder.representations.graph.Path;
 import pathfinder.representations.graph.WeightedGraph;
 import pathfinder.representations.maps.GridMap;
@@ -21,7 +21,7 @@ import pathfinder.utils.graphCreator.GridGraphCreator;
 
 //class for generating statistics
 public class Benchmark {
-	List<IAlgorithm<Point>> algos = new LinkedList<IAlgorithm<Point>>();
+	List<IGraphAlgorithm<Point>> algos = new LinkedList<IGraphAlgorithm<Point>>();
 	
 	//Generate Statistics for Grid Graph
 	public void generateGridMapStatistics(GridMap map, Point start, Point end) {
@@ -48,7 +48,7 @@ public class Benchmark {
 		System.out.println("Created graph!");
 		
 		//run each algorithm and benchmark
-		for (IAlgorithm<Point> algo : algos) {
+		for (IGraphAlgorithm<Point> algo : algos) {
 			long startTime = System.currentTimeMillis();
 			Path<Point> p = algo.run(g, start, end);
 			long finishTime = System.currentTimeMillis();
@@ -60,17 +60,19 @@ public class Benchmark {
 		}
 	}
 	
-	public void generateWaypointMapStatistics(VertexMap map, Point start,Point end) {
+	//generate results for navigation mesh algorithm
+	public void generateNavMeshMapStatistics(VertexMap map, Point start,Point end) {
 		MapAreaDivider dividedMap = new MapAreaDivider(map);
-		WaypointAlgorithm algo = new WaypointAlgorithm();
+		NavigationMeshAlgorithm algo = new NavigationMeshAlgorithm();
 		
+		//get the rectangle-divided map
 		WeightedGraph<Rectangle> g =  dividedMap.getGraph();
 		
-		//run waypoint algorithm
+		//run nav mesh algorithm
 		long startTime = System.currentTimeMillis();
 		Path<Point> path = algo.run(g, start, end);
 		long finishTime = System.currentTimeMillis();
-		System.out.println("Waypoint finished with: " + (finishTime - startTime));
+		System.out.println("Nav Mesh finished with: " + (finishTime - startTime));
 		System.out.println("Total path length: " + path.getTotalWeight());
 	}
 }

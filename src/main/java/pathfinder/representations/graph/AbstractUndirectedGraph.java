@@ -3,6 +3,7 @@ package pathfinder.representations.graph;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
+//abstract class for undirected graphs
 public abstract class AbstractUndirectedGraph<V> {
 	protected int _V;
 	protected int _E;
@@ -52,8 +53,8 @@ public abstract class AbstractUndirectedGraph<V> {
 		return _E;
 	}
 	
+	//validates vertex
 	public void validateVertex(V v) {
-//		System.out.println(v);
 		if (!_adj.containsKey(v))
 			throw new NoSuchElementException();
 	}

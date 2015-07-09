@@ -27,6 +27,7 @@ public class RectangleGridMapCreator extends AbstractGridMapCreator {
 			}
 		}
 		
+		//mark inner rectangle pixels as obstacles
 		for (Rectangle rect : _rects) {
 			for (int j = rect.getUpper().getY(); j <= rect.getLower().getY(); j++) {
 				for(int i = rect.getUpper().getX(); i <= rect.getLower().getX(); i++) {

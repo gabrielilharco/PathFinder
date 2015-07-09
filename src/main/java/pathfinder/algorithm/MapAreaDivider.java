@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
-import pathfinder.representations.graph.Graph;
 import pathfinder.representations.graph.WeightedGraph;
 import pathfinder.representations.maps.VertexMap;
 import pathfinder.representations.primitives.LineInfo;

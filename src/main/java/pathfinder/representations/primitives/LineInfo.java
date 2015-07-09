@@ -1,7 +1,6 @@
 package pathfinder.representations.primitives;
 
 public class LineInfo {
-	
 	private int start;
 	private int end;
 	public final int sourceStart;

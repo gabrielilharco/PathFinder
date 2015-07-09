@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+//creates grid map from text file
 public class TextFileGridMapCreator extends AbstractGridMapCreator {
 	public GridMap createMap (){
 		

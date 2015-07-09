@@ -2,6 +2,9 @@ package pathfinder.representations.maps;
 
 import pathfinder.representations.primitives.Point;
 
+//2d boolean array for grid map.
+//if a position is marked as false, there is no
+//obstacle at that point
 public class GridMap {
 	public int height, width;
 	public boolean[][] isObstacle;
